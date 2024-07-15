@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website with Clickable Logo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-4 py-6 flex items-center justify-between">
+            <div id="logo" class="text-3xl font-bold text-gray-800 cursor-pointer">
+                <img src="logo.png" alt="Logo" class="h-10 w-auto inline-block">
+                My Website
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-6">
+        <h1 class="text-4xl font-bold text-gray-800">Welcome to My Website</h1>
+        <p class="mt-4 text-gray-600">Click the logo to trigger an action.</p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

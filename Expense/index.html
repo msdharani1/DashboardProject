@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense</title>
+    <link rel="icon" type="image/png" href="./img/logo.png" sizes="16x16">
+    <!-- bootstrap link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- ~ fontasome link -->
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
+    <!-- & tailwindcss link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- custom css -->
+    <style>a{text-decoration: none!important;}</style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        body{
+            font-family: 'Poppins', sans-serif;
+        }
+        body::-webkit-scrollbar {
+            display: none!important;
+        }
+        a{
+            color: #000!important;
+            text-decoration: none!important;
+        }
+        nav ul li:hover span,
+        nav ul li:hover i{
+            color: #fff!important;
+        }
+        nav{
+            height: 100vh!important;
+            overflow: hidden;
+            transition: .5s all;
+        }
+        .active{
+            height: 40px;
+        }
+        .active i{
+            background-color: #bf9853;
+            padding: 12px 10px;
+            border-radius: 50%;
+            position: relative;
+            left: -10px;
+            color: #fff;
+        }
+        .active span{
+            position: relative;
+            left: -20px;
+        }
+        nav:hover .active{
+            background-color: #bf9853;
+            color: #fff!important;
+        }
+        nav ul li span,
+        #logout span{
+            visibility: hidden;
+        }
+        @media (min-width: 700px){
+            nav:hover span,
+            nav:hover #logout span{
+                visibility:visible;
+            }
+            nav:hover #hide{
+                display: block;
+            }
+        }
+        #table tr:nth-child(odd){
+            background-color: #faf6ed !important;
+        }
+        #table tr:nth-child(even){
+            background-color: #fff !important;
+        }
+        .text-\[16px\]{
+            font-size: 14px!important;
+        }
+    </style>
+</head>
+<body class=" bg-[#faf6ed]">
+    <header>
+        <div id="profile" class="bg-white h-[70px] w-full shadow-sm flex justify-between items-center lg:px-4 px-2">
+            <div id="logo" class="flex items-center cursor-pointer">
+                <img src="./img/logo.png" alt="Logo" class="w-[60px] h-[55px]">
+                <p id="CompanyName" class="text-xl font-semi-bold text-[#bf9853] hidden lg:block">BUILDERS</p>
+            </div>
+            <div id="profile-info" class="flex items-center mr-3">
+                <div id="notification" class="border-r-2 border-gray-200 px-[20px] cursor-pointer">
+                    <span class="center after:content-[''] after:absolute after:top-4 after:right-[210px] after:w-[12px] after:h-[12px] after:bg-[#bf9853] after:rounded-full">
+                        <i class="fa-light fa-bell bg-[#f1f5f9] w-9 h-9 rounded-full flex items-center justify-center "></i>
+                    </span>
+                </div>
+                <div id="profile-detail" class="ps-5 flex">
+                    <img src="./img/pro.webp" alt="profile image" class="w-[40px] h-[40px] rounded-3xl cursor-pointer">
+                    <div id="Profile_Name" class="ms-3 flex flex-col justify-center items-start">
+                        <div class="flex cursor-pointer">
+                            <p id="profileName" class="text-[12px]">Karan gupta</p>
+                            <p id="Profile_DropdownIcon" class="relative bottom-1"><i class="fa-regular fa-chevron-down ml-2 text-[10px]"></i></p>
+                        </div>
+                        <div id="profile_Id">
+                            <p class="text-[10px] text-gray-500 relative bottom-1 cursor-pointer">JS_SC0001</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="w-full flex h-[100%]">
+        <nav class="bg-white hover:lg:w-[18%] w-[20%] lg:w-[5%] md:w-[8%] hover:md:w-[25%] xl:w-[5%] 2xl:w-[4%] flex flex-col justify-between h-[89vh!important]">
+            <ul class="flex flex-col justify-center">
+                <li>
+                    <a href="#" class="flex items-center gap-3 ps-6 py-[10px] hover:bg-[#bf975386]">
+                        <!-- <svg class="w-5 h-5" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path d="m112 40h-64a7.99993 7.99993 0 0 0 -8 8v64a7.99993 7.99993 0 0 0 8 8h64a7.99993 7.99993 0 0 0 8-8v-64a7.99993 7.99993 0 0 0 -8-8zm-8 64h-48v-48h48zm104-64h-64a7.99993 7.99993 0 0 0 -8 8v64a7.99993 7.99993 0 0 0 8 8h64a7.99993 7.99993 0 0 0 8-8v-64a7.99993 7.99993 0 0 0 -8-8zm-8 64h-48v-48h48zm-88 32h-64a7.99993 7.99993 0 0 0 -8 8v64a7.99977 7.99977 0 0 0 8 8h64a7.99977 7.99977 0 0 0 8-8v-64a7.99993 7.99993 0 0 0 -8-8zm-8 64h-48v-48h48zm104-64h-64a7.99993 7.99993 0 0 0 -8 8v64a7.99977 7.99977 0 0 0 8 8h64a7.99977 7.99977 0 0 0 8-8v-64a7.99993 7.99993 0 0 0 -8-8zm-8 64h-48v-48h48z"/></svg> -->
+                        <i class="fa-regular fa-house"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center gap-3 ps-6 py-[10px]  hover:bg-[#bf975386] active">
+                        <i class="fa-light fa-database"></i>
+                        <span>Expense</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Advance/index.html" class="flex items-center gap-3 ps-6 py-[10px]  hover:bg-[#bf975386]">
+                        <i class="fa-light fa-circle-dollar"></i>
+                        <span>Advance</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Expense Form/index.html" class="flex items-center gap-3 ps-6 py-[10px] hover:bg-[#bf975386]">
+                        <i class="fa-regular fa-file-lines"></i>
+                        <span class="hidden" id="hide">Expense Form</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center gap-3 ps-6 py-[10px] hover:bg-[#bf975386]">
+                        <i class="fa-regular fa-user"></i>
+                        <span>Attenance</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Purchase Order/index.html" class="flex items-center gap-3 ps-6 py-[10px] hover:bg-[#bf975386]">
+                        <i class="fa-light fa-clipboard"></i>
+                        <span>Purchase Order</span>
+                    </a>
+                </li>
+            </ul>
+            <div id="logout" class="ps-6 py-[10px] cursor-pointer">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="ps-[6px]">Logout</span>
+            </div>
+        </nav>
+        <!-- flex w-[80%] bg-white mx-4 my-4 -->
+        <div class="flex flex-col w-[84%] lg:w-[100%] sm:text-[14px!important] md:text-[14px!importamt] h-[85vh] overflow-scroll">
+            <section class="flex items-start justify-start mx-4 mt-4 relative">
+                <span id="adv" class="ml-2 mr-4 font-semibold border-b-2 border-[#bf9853] cursor-pointer text-[10px] lg:text-[14px]" onclick="advance()">Overview</span>
+                <span id="adv_table" class="mr-4 border-b-2 border-[#cdcdcd] cursor-pointer text-[10px] lg:text-[14px]" onclick="adv_table()">Table view</span>
+                <span id="adv_database" class="mr-2 border-b-2 border-[#cdcdcd] cursor-pointer text-[10px] lg:text-[14px]" onclick="adv_data()">Database</span>
+            </section>
+            <main id="adv_conatiner" class="w-[95%] ml-4 mr-4 block">
+                <article class="bg-white pt-[10px] pb-[20px] px-[10px] ">
+                    <div class="flex justify-start items-center gap-10 mt-4 ml-3 flex-wrap">
+                        <div class="flex flex-col lg:w-[20%] w-[100%]">
+                            <span class="font-semibold text-[16px]">Client Name</span>
+                            <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[100%] text-[gray]">
+                                <option>Ramar-krishnankovil</option>
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col lg:w-[10%] w-[100%]">
+                            <span class="font-semibold text-[16px]">Expenses</span>
+                            <input type="number" placeholder="4,38,100" class="border border-[#f5efe5] rounded-md p-2 mt-2 w-[100%]">
+                        </div>
+                        <div class="flex gap-5 flex-col lg:flex-row w-[100%] lg:w-[30%]">
+                            <div class="flex flex-col lg:w-[50%] w-[100%]">
+                                <span class="font-semibold text-[16px]">From Date</span>
+                                <input type="date" class="p-2 mt-2 border border-[#f5efe5] rounded-md text-[gray] " value='2024-06-24'>
+                            </div>
+                            <div class="flex flex-col lg:w-[50%] w-[100%]">
+                                <span class="font-semibold text-[16px]">To Date</span>
+                                <input type="date" class="p-2 mt-2 border border-[#f5efe5] rounded-md text-[gray] " value='2024-06-24'>
+                            </div>
+                        </div>
+                        <div class="w-[100%] lg:w-[15%]">
+                            <span class="font-semibold text-[16px]">Income</span>
+                            <div class="flex w-[100%]">
+                                <input type="number" class="p-2 mt-2 border border-[#f5efe5] rounded-md w-[100%]" placeholder="2,54,454">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <section class="flex w-full lg:flex-row flex-col">
+                    <aside class="mt-[30px] bg-white lg:basis-[50%] basis-[100%] p-2 pt-5">
+                        <div id="pieContainer" class="flex justify-center items-center lg:justify-between w-[100%] p-4 flex-col lg:flex-row">
+                            <div id="pie-left" class="lg:w-[48%] w-[100%]">
+                                <div id="vendarExpenses" class="h-[250px] mb-4 p-2">
+                                    <label class="block mb-2 font-bold">Vendar Expenses</label>
+                                    <div class="h-[200px] relative">
+                                        <canvas id="vendarChart"></canvas>
+                                    </div>
+                                </div>
+                                <div id="contractorExpenses" class="h-[250px] p-2">
+                                    <label class="block mb-2 font-bold">Contractor Expenses</label>
+                                    <div class="h-[200px] relative">
+                                        <canvas id="contractorChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pie-right" class="lg:w-[48%] w-[100%]">
+                                <div id="TotalExpenses" class="h-[300px] lg:h-[500px] p-2 flex flex-col  lg:items-center justify-center">
+                                    <label class="block mb-2 font-bold">Total Expenses by Category</label>
+                                    <div class="h-[250px] relative">
+                                        <canvas id="totalExpensesChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <aside class="mt-[30px] bg-white lg:basis-[50%] basis-[50%] mb-10">
+                        <div class="flex justify-between mt-3 mx-3">
+                            <div id="matrialQuantity">
+                                <p>Matrial Quantity</p>
+                            </div>
+                            <div id="totalAmount">
+                                <p class="text-red-600">6,98,0000</p>
+                            </div>
+                        </div>
+                        <section id="t_data" class="font-semibold overflow-scroll text-sm h-[600px]">
+                            <table id="table" class="mt-2 ml-3 rounded-md border-l-[5px] border-[#bf9853]  lg:w-[100%!important] w-[700px!important]" style="table-layout: fixed; width: 100%;">
+                                <tr>
+                                    <th class="w-[20%] p-1">Name</th>
+                                    <th class="w-[20%] p-1">Quantity</th>
+                                    <th class="w-[20%] p-1">Cost/Sqft</th>
+                                    <th class="w-[20%] p-1">Amount</th>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[20%] p-1">Cement</td>
+                                    <td class="w-[20%] p-1">13 Bags</td>
+                                    <td class="w-[20%] p-1">#DIV/0!</td>
+                                    <td class="w-[20%] p-1">17,000</td>
+                                </tr>
+                            </table>
+                        </section>
+                    </aside>
+            </section>
+            </main>
+            <section id="adv_table_data" class="hidden bg-white ms-7 w-[100%] pr-10">
+                <article class="bg-white pt-[10px] pb-[20px] px-[10px] ">
+                    <div class="flex justify-start items-center gap-10 mt-4 ml-3 flex-wrap">
+                        <div class="flex flex-col lg:w-[20%] w-[100%]">
+                            <span class="font-semibold text-[16px]">Client Name</span>
+                            <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[100%] text-[gray]">
+                                <option>Ramar-krishnankovil</option>
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col lg:w-[10%] w-[100%]">
+                            <span class="font-semibold text-[16px]">Expenses</span>
+                            <input type="number" placeholder="4,38,100" class="border border-[#f5efe5] rounded-md p-2 mt-2 w-[100%]">
+                        </div>
+                        <div class="flex gap-5 flex-col lg:flex-row w-[100%] lg:w-[30%]">
+                            <div class="flex flex-col lg:w-[50%] w-[100%]">
+                                <span class="font-semibold text-[16px]">From Date</span>
+                                <input type="date" class="p-2 mt-2 border border-[#f5efe5] rounded-md text-[gray] " value='2024-06-24'>
+                            </div>
+                            <div class="flex flex-col lg:w-[50%] w-[100%]">
+                                <span class="font-semibold text-[16px]">To Date</span>
+                                <input type="date" class="p-2 mt-2 border border-[#f5efe5] rounded-md text-[gray] " value='2024-06-24'>
+                            </div>
+                        </div>
+                        <div class="w-[100%] lg:w-[15%]">
+                            <span class="font-semibold text-[16px]">Income</span>
+                            <div class="flex w-[100%]">
+                                <input type="number" class="p-2 mt-2 border border-[#f5efe5] rounded-md w-[100%]" placeholder="2,54,454">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <br>
+                <div class="flex justify-end items-center">
+                    <button id="adv_pdf" class="mr-3 text-[12px] lg:text-[18px] text-[#da5959] hover:underline hidden felx items-center justify-center">Export PDF <i id="adv_pdf_l" class="fa-regular fa-file-pdf felx items-center justify-center hidden"></i></button>
+                    <button id="adv_xl" class="mr-3 text-[12px] lg:text-[18px] text-[#166116] hover:underline hidden felx items-center justify-center">Export XL <i id="adv_xl_l" class="fa-solid fa-file-xls felx items-center justify-center hidden"></i></button>
+                    <button id="adv_print" class="mr-3 text-[12px] lg:text-[18px] text-[#bf9853] hover:underline hidden felx items-center justify-center">Print <i id="adv_print_l" class="fa-solid fa-print felx items-center justify-center hidden"></i></button>
+                </div>
+                <div id="Ex_Table" class="w-[100%] overflow-auto">
+                    <table id="table" class="mt-11 ml-3 rounded-md border-l-[5px] border-[#bf9853] overflow-scroll lg:w-[100%!important] w-[1000px!important]" style="table-layout: fixed; width: 100%;">
+                        <tr>
+                            <th class="w-[10%] p-2">Time Stamp</th>
+                            <th class="w-[10%] p-2">Date</th>
+                            <th class="w-[20%] p-2">Vendar <i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
+                            <th class="w-[15%] p-2">Contractor<i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
+                            <th class="w-[10%] p-2">Quantity</th>
+                            <th class="w-[10%] p-2">Amount</th>
+                            <th class="w-[10%] p-2">Category</th>
+                            <th class="w-[10%] p-2">E.No</th>
+                            <th class="w-[10%] p-2">A/c Type</th>
+                            <th class="w-[10%] p-2">Activity</th>
+                        </tr>
+                        <tr>
+                            <td class="w-[10%] p-2">18/08/21 13:27</td>
+                            <td class="w-[10%] p-2">18/08/21</td>
+                            <td class="w-[20%] p-2">-</td>
+                            <td class="w-[15%] p-2">permal Metal Works</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2">3000</td>
+                            <td class="w-[10%] p-2">Metal Work</td>
+                            <td class="w-[10%] p-2">235</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="w-[10%] p-2">18/08/21 13:27</td>
+                            <td class="w-[10%] p-2">18/08/21</td>
+                            <td class="w-[20%] p-2">-</td>
+                            <td class="w-[15%] p-2">permal Metal Works</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2">3000</td>
+                            <td class="w-[10%] p-2">Metal Work</td>
+                            <td class="w-[10%] p-2">235</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="w-[10%] p-2">18/08/21 13:27</td>
+                            <td class="w-[10%] p-2">18/08/21</td>
+                            <td class="w-[20%] p-2">-</td>
+                            <td class="w-[15%] p-2">permal Metal Works</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2">3000</td>
+                            <td class="w-[10%] p-2">Metal Work</td>
+                            <td class="w-[10%] p-2">235</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="w-[10%] p-2">18/08/21 13:27</td>
+                            <td class="w-[10%] p-2">18/08/21</td>
+                            <td class="w-[20%] p-2">-</td>
+                            <td class="w-[15%] p-2">permal Metal Works</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2">3000</td>
+                            <td class="w-[10%] p-2">Metal Work</td>
+                            <td class="w-[10%] p-2">235</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="w-[10%] p-2">18/08/21 13:27</td>
+                            <td class="w-[10%] p-2">18/08/21</td>
+                            <td class="w-[20%] p-2">-</td>
+                            <td class="w-[15%] p-2">permal Metal Works</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2">3000</td>
+                            <td class="w-[10%] p-2">Metal Work</td>
+                            <td class="w-[10%] p-2">235</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="w-[10%] p-2">18/08/21 13:27</td>
+                            <td class="w-[10%] p-2">18/08/21</td>
+                            <td class="w-[20%] p-2">-</td>
+                            <td class="w-[15%] p-2">permal Metal Works</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2">3000</td>
+                            <td class="w-[10%] p-2">Metal Work</td>
+                            <td class="w-[10%] p-2">235</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="w-[10%] p-2">18/08/21 13:27</td>
+                            <td class="w-[10%] p-2">18/08/21</td>
+                            <td class="w-[20%] p-2">-</td>
+                            <td class="w-[15%] p-2">permal Metal Works</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2">3000</td>
+                            <td class="w-[10%] p-2">Metal Work</td>
+                            <td class="w-[10%] p-2">235</td>
+                            <td class="w-[10%] p-2">-</td>
+                            <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </section>
+            <section id="adv_database_data" class="hidden bg-white ms-7 w-[100%] pr-10 overflow-auto">
+                <table id="table" class="mt-4 ml-3 rounded-md border-l-[5px] border-[#bf9853] lg:w-[100%!important] w-[1000px!important]" style="table-layout: fixed; width: 100%;">
+                    <tr>
+                        <th class="w-[10%] p-2">Time Stamp</th>
+                        <th class="w-[10%] p-2">Date</th>
+                        <th class="w-[10%] p-2">Site Name</th>
+                        <th class="w-[10%] p-2">Ventor</th>
+                        <th class="w-[10%] p-2">Contractor</th>
+                        <th class="w-[10%] p-2">Quantity</th>
+                        <th class="w-[10%] p-2">Amount</th>
+                        <th class="w-[10%] p-2">Category</th>
+                        <th class="w-[5%] p-2">E.No</th>
+                        <th class="w-[10%] p-2">A/c Type</th>
+                        <th class="w-[10%] p-2">Activity</th>
+                    </tr>
+                    <tr>
+                        <td class="w-[10%] p-2">28/08/21 13:16</td>
+                        <td class="w-[10%] p-2">18/08/21</td>
+                        <td class="w-[10%] p-2">Ramar-krishnankovil</td>
+                        <td class="w-[10%] p-2">-</td>
+                        <td class="w-[10%] p-2">Perumal Metal Work</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2">3,000</td>
+                        <td class="w-[10%] p-2">Metal Work</td>
+                        <td class="w-[10%] p-2">235</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="w-[10%] p-2">28/08/21 13:16</td>
+                        <td class="w-[10%] p-2">18/08/21</td>
+                        <td class="w-[10%] p-2">Ramar-krishnankovil</td>
+                        <td class="w-[10%] p-2">Thangam Cements</td>
+                        <td class="w-[10%] p-2">Murugan Manson</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2">3,000</td>
+                        <td class="w-[10%] p-2">Metal Work</td>
+                        <td class="w-[10%] p-2">235</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="w-[10%] p-2">28/08/21 13:16</td>
+                        <td class="w-[10%] p-2">18/08/21</td>
+                        <td class="w-[10%] p-2">Ramar-krishnankovil</td>
+                        <td class="w-[10%] p-2">-</td>
+                        <td class="w-[10%] p-2">Perumal Metal Work</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2">3,000</td>
+                        <td class="w-[10%] p-2">Metal Work</td>
+                        <td class="w-[10%] p-2">235</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="w-[10%] p-2">28/08/21 13:16</td>
+                        <td class="w-[10%] p-2">18/08/21</td>
+                        <td class="w-[10%] p-2">Ramar-krishnankovil</td>
+                        <td class="w-[10%] p-2">Thangam Cements</td>
+                        <td class="w-[10%] p-2">Murugan Manson</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2">3,000</td>
+                        <td class="w-[10%] p-2">Metal Work</td>
+                        <td class="w-[10%] p-2">235</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="w-[10%] p-2">28/08/21 13:16</td>
+                        <td class="w-[10%] p-2">18/08/21</td>
+                        <td class="w-[10%] p-2">Ramar-krishnankovil</td>
+                        <td class="w-[10%] p-2">-</td>
+                        <td class="w-[10%] p-2">Perumal Metal Work</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2">3,000</td>
+                        <td class="w-[10%] p-2">Metal Work</td>
+                        <td class="w-[10%] p-2">235</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="w-[10%] p-2">28/08/21 13:16</td>
+                        <td class="w-[10%] p-2">18/08/21</td>
+                        <td class="w-[10%] p-2">Ramar-krishnankovil</td>
+                        <td class="w-[10%] p-2">Thangam Cements</td>
+                        <td class="w-[10%] p-2">Murugan Manson</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2">3,000</td>
+                        <td class="w-[10%] p-2">Metal Work</td>
+                        <td class="w-[10%] p-2">235</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="w-[10%] p-2">28/08/21 13:16</td>
+                        <td class="w-[10%] p-2">18/08/21</td>
+                        <td class="w-[10%] p-2">Ramar-krishnankovil</td>
+                        <td class="w-[10%] p-2">-</td>
+                        <td class="w-[10%] p-2">Perumal Metal Work</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2">3,000</td>
+                        <td class="w-[10%] p-2">Metal Work</td>
+                        <td class="w-[10%] p-2">235</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="w-[10%] p-2">28/08/21 13:16</td>
+                        <td class="w-[10%] p-2">18/08/21</td>
+                        <td class="w-[10%] p-2">Ramar-krishnankovil</td>
+                        <td class="w-[10%] p-2">Thangam Cements</td>
+                        <td class="w-[10%] p-2">Murugan Manson</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2">3,000</td>
+                        <td class="w-[10%] p-2">Metal Work</td>
+                        <td class="w-[10%] p-2">235</td>
+                        <td class="w-[5%] p-2">-</td>
+                        <td class="w-[10%] p-2"><i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i> <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i> <i class="fa-regular fa-clock-rotate-left ml-2 text-[#bf9853] cursor-pointer"></i></td>
+                    </tr>
+                    
+                </table>
+            </section>
+        </div>
+    </main>
+    <!-- modal popup -->
+    <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header flex items-center justify-center relative">
+          <h5 class="modal-title text-[red]" id="myModalLabel">Choose Title</h5>
+          <span><select id="dropdown" name="dropdown" class="ml-4 py-2 px-3 lg:my-5 border border-gray-500 rounded-md text-black">
+            <option value="Daily Wage">Contractor Name</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option></h5>
+        </select></span>
+          <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+        </div>
+        <div class="modal-body">
+          <!-- Modal body content goes here -->
+          <input type="text" placeholder="Enter text here..." class="border-b-black">
+        </div>
+        <div class="modal-footer flex items-center justify-center">
+          <button type="button" class="btn btn-secondary bg-[#bf9853] px-4 py-2 hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]" data-bs-dismiss="modal">Save</button>
+          <button type="button" class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <script src="app.js"></script>
+    <!-- bootstrap 5 script cdn link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- pie chart cdn link -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="piechart.js"></script>
+</body>
+</html>
