@@ -3,12 +3,16 @@ let view = document.getElementById("view");
 let v_form = document.getElementById("v_form");
 let t = document.querySelector("#table");
 let t_data = document.getElementById("t_data");
-let pdf = document.getElementById("pdf")
-let xl=document.getElementById("xl")
+let pdf = document.getElementById("pdf");
+let xl=document.getElementById("xl");
 let print_ =document.getElementById("print")
 let pdf_l = document.getElementById("pdf_l")
 let xl_l=document.getElementById("xl_l")
 let print_l =document.getElementById("print_l")
+let inp = document.querySelector("#inp");
+let in_data = document.querySelector("#in_data");
+let pro_sts = document.querySelector("#pro_sts");
+let pro_sts_data = document.querySelector("#pro_sts_data");
 
 function table(){
     v_form.className = "hidden";
@@ -70,11 +74,19 @@ let adv_print_l =document.getElementById("adv_print_l")
 function advance(){
     adv_conatiner.classList.remove("hidden");
     adv_conatiner.classList.add("block");
+    in_data.classList.add("hidden");
+    in_data.classList.remove("block");
+    pro_sts_data.classList.remove("block");
+    pro_sts_data.classList.add("hidden");
     adv_table_data.classList.add("hidden");
     adv_database_data.classList.remove("block");
     adv_database_data.classList.add("hidden");
     adv.classList.remove("border-[#cdcdcd]");
     adv.classList.add("border-[#bf9853]");
+    inp.classList.remove("border-[#bf9853]");
+    inp.classList.add("border-[#cdcdcd]");
+    pro_sts.classList.remove("border-[#bf9853]");
+    pro_sts.classList.add("border-[#cdcdcd]");
     advtable.classList.remove("border-[#bf9853]");
     advtable.classList.add("border-[#cdcdcd]");
     adv_database.classList.remove("border-[#bf9853]");
@@ -98,10 +110,18 @@ function adv_table(){
     adv_table_data.classList.add("block");
     adv_conatiner.classList.remove("block");
     adv_conatiner.classList.add("hidden");
+    in_data.classList.add("hidden");
+    in_data.classList.remove("block");
+    pro_sts_data.classList.remove("block");
+    pro_sts_data.classList.add("hidden");
     adv_database_data.classList.remove("block");
     adv_database_data.classList.add("hidden");
-    adv.classList.add("border-[#cdcdcd]");
     adv.classList.remove("border-[#bf9853]");
+    adv.classList.add("border-[#cdcdcd]");
+    inp.classList.remove("border-[#bf9853]");
+    inp.classList.add("border-[#cdcdcd]");
+    pro_sts.classList.remove("border-[#bf9853]");
+    pro_sts.classList.add("border-[#cdcdcd]");
     advtable.classList.add("border-[#bf9853]");
     advtable.classList.remove("border-[#cdcdcd]");
     adv_database.classList.remove("border-[#bf9853]");
@@ -124,11 +144,19 @@ function adv_data(){
     adv_database_data.classList.remove("hidden");
     adv_database_data.classList.add("block");
     adv_conatiner.classList.remove("block");
+    in_data.classList.add("hidden");
+    in_data.classList.remove("block");
+    pro_sts_data.classList.remove("block");
+    pro_sts_data.classList.add("hidden");
     adv_conatiner.classList.add("hidden");
     adv_table_data.classList.remove("block");
     adv_table_data.classList.add("hidden");
     adv.classList.add("border-[#cdcdcd]");
     adv.classList.remove("border-[#bf9853]");
+    inp.classList.remove("border-[#bf9853]");
+    inp.classList.add("border-[#cdcdcd]");
+    pro_sts.classList.remove("border-[#bf9853]");
+    pro_sts.classList.add("border-[#cdcdcd]");
     advtable.classList.remove("border-[#bf9853]");
     advtable.classList.add("border-[#cdcdcd]");
     adv_database.classList.add("border-[#bf9853]");
@@ -207,3 +235,64 @@ fileInput.addEventListener('change', (event) => {
     });
   }
 });
+
+
+
+// input data section
+
+
+function input_data(){
+  in_data.classList.remove("hidden")
+  in_data.classList.add("block");
+
+  adv_conatiner.classList.remove("block");
+  adv_conatiner.classList.add("hidden");
+
+  pro_sts_data.classList.remove("block");
+  pro_sts_data.classList.add("hidden");
+
+  adv_table_data.classList.remove("block");
+  adv_table_data.classList.add("hidden");
+
+  adv_database_data.classList.remove("block");
+  adv_database_data.classList.add("hidden");
+  
+  inp.classList.remove("border-[#cdcdcd]");
+  inp.classList.add("border-[#bf9853]");
+  adv.classList.remove("border-[#bf9853]");
+  adv.classList.add("border-[#cdcdcd]");
+  pro_sts.classList.remove("border-[#bf9853]");
+  pro_sts.classList.add("border-[#cdcdcd]");
+  advtable.classList.remove("border-[#bf9853]");
+  advtable.classList.add("border-[#cdcdcd]");
+  adv_database.classList.remove("border-[#bf9853]");
+  adv_database.classList.add("border-[#cdcdcd]");
+}
+
+function project_sts(){
+  pro_sts_data.classList.remove("hidden")
+  pro_sts_data.classList.add("block");
+
+  adv_conatiner.classList.remove("block");
+  adv_conatiner.classList.add("hidden");
+
+  in_data.classList.remove("block");
+  in_data.classList.add("hidden");
+
+  adv_table_data.classList.remove("block");
+  adv_table_data.classList.add("hidden");
+
+  adv_database_data.classList.remove("block");
+  adv_database_data.classList.add("hidden");
+  
+  pro_sts.classList.remove("border-[#cdcdcd]");
+  pro_sts.classList.add("border-[#bf9853]");
+  adv.classList.remove("border-[#bf9853]");
+  adv.classList.add("border-[#cdcdcd]");
+  inp.classList.remove("border-[#bf9853]");
+  inp.classList.add("border-[#cdcdcd]");
+  advtable.classList.remove("border-[#bf9853]");
+  advtable.classList.add("border-[#cdcdcd]");
+  adv_database.classList.remove("border-[#bf9853]");
+  adv_database.classList.add("border-[#cdcdcd]");
+}

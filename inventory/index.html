@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purchase Order</title>
+    <title>Inventory</title>
     <link rel="icon" type="image/png" href="./img/logo.png" sizes="16x16">
     <!-- bootstrap link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -40,12 +40,12 @@
             padding: 12px 12px;
             border-radius: 50%;
             position: relative;
-            left: -10px;
+            left: -15px;
             color: #fff;
         }
         .active span{
             position: relative;
-            left: -20px;
+            left: -26px;
         }
         nav:hover .active{
             background-color: #bf9853;
@@ -125,6 +125,7 @@
     </header>
 
     <main class="w-full flex h-[100%]">
+        <!-- side navigation code  -->
         <nav class="bg-white hover:lg:w-[18%] w-[20%] lg:w-[5%] md:w-[8%] hover:md:w-[25%] xl:w-[5%] 2xl:w-[4%] flex flex-col justify-between h-[89vh!important]">
             <ul class="flex flex-col justify-center">
                 <li>
@@ -159,7 +160,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/Purchase Order/index.html" class="flex items-center gap-3 ps-6 py-[10px] hover:bg-[#bf975386] active">
+                    <a href="/Purchase Order/index.html" class="flex items-center gap-3 ps-6 py-[10px] hover:bg-[#bf975386]">
                         <i class="fa-light fa-clipboard"></i>
                         <span>Purchase Order</span>
                     </a>
@@ -171,7 +172,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/inventory/index.html" class="flex items-center gap-3 ps-6 py-[10px] hover:bg-[#bf975386]">
+                    <a href="/inventory/index.html" class="flex items-center gap-3 ps-6 py-[10px] hover:bg-[#bf975386] active">
                         <i class="fa-solid fa-boxes-stacked"></i>
                         <span>Inventory</span>
                     </a>
@@ -182,24 +183,39 @@
                 <span class="ps-[6px]">Logout</span>
             </div>
         </nav>
-        <!-- flex w-[80%] bg-white mx-4 my-4 -->
+
+        
+
         <div class="flex flex-col w-[85%] lg:w-[95%] max-w-[1500px] h-[85vh] overflow-scroll">
+
+            <!-- Top menu option code  -->
             <section class="flex items-end justify-start mx-4 mt-4 relative user-select">
-                <span id="P_O" class="text-[10px] lg:text-[14px] ml-2 mr-4 font-semibold border-b-2 border-[#bf9853] cursor-pointer text-sm pb-1"
-                    onclick="Purchase_Order()">Purchase Order</span>
-                <span id="His" class="text-[10px] lg:text-[14px]  mr-4 border-b-2 border-[#cdcdcd] cursor-pointer text-sm pb-1"
+                <span id="P_O" class="lg:w-[auto] w-[20%] text-[10px] lg:text-[14px] ml-2 mr-4 font-semibold border-b-2 border-[#bf9853] cursor-pointer text-sm pb-1"
+                    onclick="Purchase_Order()">Dispatch</span>
+                <span id="pur" class="lg:w-[auto] w-[20%] text-[10px] lg:text-[14px] ml-2 mr-4  border-b-2 border-[#cdcdcd] cursor-pointer text-sm pb-1"
+                    onclick="Purchase()">Purchase</span>
+                <span id="site_usage" class="lg:w-[auto] w-[20%] text-[10px] lg:text-[14px] ml-2 mr-4  border-b-2 border-[#cdcdcd] cursor-pointer text-sm pb-1"
+                    onclick="Site_Usage()">Site Usage Report</span>
+                <span id="net" class="lg:w-[auto] w-[20%] text-[10px] lg:text-[14px] ml-2 mr-4  border-b-2 border-[#cdcdcd] cursor-pointer text-sm pb-1"
+                    onclick="Net_Stock()">Net Stock</span>
+                <span id="His" class="lg:w-[auto] w-[20%] text-[10px] lg:text-[14px]  mr-4 border-b-2 border-[#cdcdcd] cursor-pointer text-sm pb-1"
                     onclick="History_()">History</span>
-                <span id="inp" class="text-[10px] lg:text-[14px]  mr-2 border-b-2 border-[#cdcdcd] cursor-pointer text-sm pb-1" onclick="input_data()">Input
-                    Data</span>
+                <span id="inp" class="lg:w-[auto] w-[20%] text-[10px] lg:text-[14px]  mr-2 border-b-2 border-[#cdcdcd] cursor-pointer text-sm pb-1" onclick="input_data()">Add Input</span>  
+                <div class="lg:mb-[40px] mb-[90px]">
+                    <span id="side_text_1" class="pb-2 absolute lg:right-[200px] right-[150px] font-semibold block text-[10px] lg:text-[16px]">Today Incoming: <span class="text-[red]">05</span></span>
+                    <span id="side_text_2" class="pb-2 absolute lg:right-[20px] right-[10px] font-semibold block text-[10px] lg:text-[16px]">Today Outgoing: <span class="text-[red]">01</span></span>
+                </div>
             </section>
-            <main id="Po_data" class="w-[95%] ml-4 mr-4 block">
+
+            <!-- Dispatch section code  -->
+            <main id="Po_data" class="w-[140%] lg:w-[95%] ml-4 mr-4 block">
                 <article class="bg-white pt-[10px] pb-[20px] px-[10px] ">
                     <div class="flex justify-start items-center gap-10 mt-4 ml-3 flex-wrap">
                         <div class="flex gap-5 flex-col lg:flex-row">
                             <div class="flex flex-col">
-                                <span class="font-semibold text-[16px]">Vendaor Name</span>
+                                <span class="font-semibold text-[16px]">Category</span>
                                 <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
-                                    <option>Thangapandar Paints</option>
+                                    <option>Select Category</option>
                                     <option value="option1">Option 1</option>
                                     <option value="option2">Option 2</option>
                                     <option value="option3">Option 3</option>
@@ -208,7 +224,7 @@
                             <div class="flex flex-col">
                                 <span class="font-semibold text-[16px]">Client Name</span>
                                 <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
-                                    <option>Muthukumar - Krishnankovil</option>
+                                    <option>Select Client Name</option>
                                     <option value="option1">Option 1</option>
                                     <option value="option2">Option 2</option>
                                     <option value="option3">Option 3</option>
@@ -223,13 +239,13 @@
                         </div>
                         <div class="flex gap-5 flex-col lg:flex-row ">
                             <div class="flex flex-col">
-                                <span class="font-semibold text-[16px]">PO. No</span>
-                                <input type="number" placeholder="4,100" class="border border-[#f5efe5] rounded-md p-2 mt-2 w-[100px] ml-[0px]">
+                                <span class="font-semibold text-[16px]">Entry No</span>
+                                <input type="number" placeholder="1906" class="border border-[#f5efe5] rounded-md p-2 mt-2 w-[100px] ml-[0px]">
                             </div>
                             <div class="flex flex-col">
                                 <span class="font-semibold text-[16px]">Site Incharge</span>
                                 <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
-                                    <option>Selva Ganesh</option>
+                                    <option>Select Site Incharge</option>
                                     <option value="option1">Option 1</option>
                                     <option value="option2">Option 2</option>
                                     <option value="option3">Option 3</option>
@@ -240,28 +256,32 @@
                 </article>
                 <section class="flex w-full flex-col lg:flex-row">
                     <aside class="mt-[30px]  bg-white basis-[30%] p-2">
-                        <div class="felx mt-3">
-                            <span class="font-semibold text-[16px] mr-[190px] ml-4">Description</span>
-                        </div>
-                        <div class="flex items-center w-[100%]">
-                            <span class="w-[80%]">
-                                <select id="vendor-name"
-                                    class="mt-2 px-2 py-2 font-semibold ml-7 border border-[#f5efe5] rounded-md w-[100%] text-[black]">
-                                    <option>Sanding Sealer</option>
-                                    <option value="option1">Option 1</option>
-                                    <option value="option2">Option 2</option>
-                                    <option value="option3">Option 3</option>
-                                </select>
-                            </span>
+                        <div class="flex items-center justify-between">
+                            <div class="felx flex-col items-center mt-3 basis-[80%] w-[100%]">
+                                <p class="font-semibold text-[16px] ml-4">Item Name</p>
+                                <span class="w-[80%]">
+                                    <select id="vendor-name"
+                                        class="mt-2 px-2 py-2 font-semibold ml-7 border border-[#f5efe5] rounded-md w-[100%] text-[black]">
+                                        <option>Please Select</option>
+                                        <option value="option1">Option 1</option>
+                                        <option value="option2">Option 2</option>
+                                        <option value="option3">Option 3</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="flex flex-col items-center w-[100%] basis-[30%]">
+                                <p class="font-semibold text-[16px] ml-3">Avl</p>
+                                <input type="number" value="148" class="text-[red] border border-[#f5efe5] w-[60px] px-2 py-2 ml-5 mt-1">
+                            </div>
                         </div>
                         <div class="flex items-center">
-                            <span class="font-semibold text-[16px] mr-[190px] mt-4 ml-4">Type</span>
+                            <span class="font-semibold text-[16px] mr-[190px] mt-4 ml-4">Brand</span>
                         </div>
                         <div class="flex items-center w-[100%]">
                             <span class="w-[80%]">
                                 <select id="vendor-name"
                                     class="px-2 py-2 font-semibold ml-7 mt-2 border border-[#f5efe5] rounded-md w-[100%] text-[black]">
-                                    <option>Palace Light-N0N17</option>
+                                    <option>Please Select</option>
                                     <option value="option1">Option 1</option>
                                     <option value="option2">Option 2</option>
                                     <option value="option3">Option 3</option>
@@ -273,19 +293,8 @@
                         </div>
                         <div class="flex items-center w-[100%]">
                             <span class="w-[80%]">
-                                <select id="vendor-name"
-                                    class="px-2 py-2 mt-2 font-semibold ml-7 border border-[#f5efe5] rounded-md w-[100%] text-[black]">
-                                    <option>1Kg</option>
-                                    <option value="option1">Option 1</option>
-                                    <option value="option2">Option 2</option>
-                                    <option value="option3">Option 3</option>
-                                </select>
+                                <input type="text" placeholder="Enter Your Quantity" class="px-2 py-2 mt-2 font-semibold ml-7 border border-[#f5efe5] rounded-md w-[100%] text-[black]">
                             </span>
-                        </div>
-                        <div class="flex flex-col items-start justify-start w-[100%]">
-                            <span class="font-semibold mt-4 ml-4">No.of Items</span>
-                            <input type="number" placeholder="1"
-                                class="p-2 block ml-7 mt-2 w-[80%] border border-[#f5efe5] rounded-md">
                         </div>
                         <div class="my-5 ml-2">
                             <span class="w-[100%]"><a href="#"
@@ -294,88 +303,461 @@
                     </aside>
 
                     <aside class="mt-[30px] bg-white basis-[70%] relative">
-                        <div class="flex justify-end mt-3">
-                            <button id="pdf" class="mr-3  font-semibold felx items-center justify-center text-sm lg:text-[15px]">Total weight:
-                                <span class="text-[red]">1.5kg</span></button>
-                            <button id="pdf" class="mr-3  font-semibold felx items-center justify-center text-sm lg:text-[15px]">Total item:
-                                <span class="text-[red]">02</span></button>
-                            <button id="pdf" data-bs-toggle="modal" data-bs-target="#ExportPDF_Pur_Order"
-                                class="mr-3  font-semibold hover:underline felx items-center justify-center text-sm lg:text-[15px]">Export PDF
-                                <i class="fa-regular fa-file-pdf text-[red]"></i></button>
-                        </div>
                         <section id="t_data" class="font-semibold overflow-auto text-sm mb-10">
                             <table id="table" class="my-4 ml-3 rounded-md border-l-[5px] border-[#bf9853] lg:w-[98%!important] w-[700px!important]"
                                 style="table-layout: fixed;">
                                 <tr>
                                     <th class="w-[10%] p-1">SI.No</th>
-                                    <th class="w-[20%] p-1">Description</th>
-                                    <th class="w-[20%] p-1">Type</th>
+                                    <th class="w-[20%] p-1">Item Name</th>
+                                    <th class="w-[20%] p-1">Brand</th>
                                     <th class="w-[20%] p-1">Quantity</th>
-                                    <th class="w-[20%] p-1">No.of Items</th>
+                                    <th class="w-[20%] p-1">Available</th>
                                     <th class="w-[20%] p-1">Delete</th>
                                 </tr>
                                 <tr>
                                     <td class="w-[10%] p-1">001</td>
-                                    <td class="w-[20%] p-1">White cement</td>
-                                    <td class="w-[20%] p-1">Enlighten 4148</td>
-                                    <td class="w-[20%] p-1">1kg</td>
-                                    <td class="w-[20%] p-1">1</td>
+                                    <td class="w-[20%] p-1">Foot Light</td>
+                                    <td class="w-[20%] p-1">Crompton</td>
+                                    <td class="w-[20%] p-1">1Nos</td>
+                                    <td class="w-[20%] p-1">18</td>
                                     <td>
                                         <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="w-[10%] p-1">002</td>
-                                    <td class="w-[20%] p-1">Waste cloth-Colour</td>
-                                    <td class="w-[20%] p-1">Natural Cream</td>
-                                    <td class="w-[20%] p-1">1.5kg</td>
-                                    <td class="w-[20%] p-1">1</td>
+                                    <td class="w-[20%] p-1">Tube Light</td>
+                                    <td class="w-[20%] p-1">Crompton</td>
+                                    <td class="w-[20%] p-1">12Nos</td>
+                                    <td class="w-[20%] p-1">115</td>
                                     <td>
                                         <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="w-[10%] p-1">003</td>
-                                    <td class="w-[20%] p-1">Waste cloth-Colour</td>
-                                    <td class="w-[20%] p-1">Natural Cream</td>
-                                    <td class="w-[20%] p-1">1kg</td>
-                                    <td class="w-[20%] p-1">1</td>
+                                    <td class="w-[20%] p-1">Ceiling Fan</td>
+                                    <td class="w-[20%] p-1">Orient</td>
+                                    <td class="w-[20%] p-1">5Nos</td>
+                                    <td class="w-[20%] p-1">200</td>
                                     <td>
                                         <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="w-[10%] p-1">004</td>
-                                    <td class="w-[20%] p-1">Waste cloth-Colour</td>
-                                    <td class="w-[20%] p-1">Natural Cream</td>
-                                    <td class="w-[20%] p-1">1.5kg</td>
-                                    <td class="w-[20%] p-1">1</td>
+                                    <td class="w-[20%] p-1">LED Light</td>
+                                    <td class="w-[20%] p-1">Orient</td>
+                                    <td class="w-[20%] p-1">2Nos</td>
+                                    <td class="w-[20%] p-1">12</td>
                                     <td>
                                         <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i>
                                     </td>
                                 </tr>
                             </table>
+                            <div class="flex items-end justify-end">
+                                <button class="ml-2 px-4 py-2 bg-[red] text-white rounded-md inline-block" data-bs-toggle="modal" data-bs-target="#Outgoing_Dispatch"><i class="fa-regular fa-arrow-right-from-arc mr-2"></i>Outgoing</button>
+                                <button class=" ml-2 px-4 py-2 bg-[#bf9853] text-white rounded-md inline-block" data-bs-toggle="modal" data-bs-target="#Stock_Return_Dispatch"><i class="fa-solid fa-arrow-left-from-arc mr-2"></i>Stock Return</button>
+                                <button class="ml-2 mr-2 px-4 py-2 bg-[white] border border-[red] rounded-md inline-block" data-bs-toggle="modal" data-bs-target="#Stock_Update_Dispatch"><i class="fa-solid fa-arrows-rotate mr-2"></i>Stock Update</button>
+                            </div>
                         </section>
                     </aside>
                 </section>
             </main>
-            <section id="his_data" class="hidden w-95% ml-4 mr-4">
+
+            <!-- Purchase Section code -->
+            <section id="pur_data" class="hidden w-[140%] lg:w-[95%] ml-4 mr-4">
                 <article class="bg-white pt-[10px] pb-[20px] px-[10px] ">
                     <div class="flex justify-start items-center gap-10 mt-4 ml-3 flex-wrap">
                         <div class="flex gap-5 flex-col lg:flex-row">
                             <div class="flex flex-col">
-                                <span class="font-semibold text-[16px]">Vendaor Name</span>
+                                <span class="font-semibold text-[16px]">Vendor Name</span>
                                 <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
-                                    <option>Enter Vendaor Name...</option>
+                                    <option>Select Vendor</option>
                                     <option value="option1">Option 1</option>
                                     <option value="option2">Option 2</option>
                                     <option value="option3">Option 3</option>
                                 </select>
                             </div>
                             <div class="flex flex-col">
+                                <span class="font-semibold text-[16px]">Category</span>
+                                <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
+                                    <option>Select Category</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    <option value="option3">Option 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="font-semibold text-[16px]">Date</span>
+                            <div class="flex">
+                                <input type="date" class="p-2 mt-2 border border-[#f5efe5] rounded-md lg:w-[150px] w-[230px]" placeholder="2,54,454">
+                            </div>
+                        </div>
+                        <div class="flex gap-5 flex-col lg:flex-row ">
+                            <div class="flex flex-col">
+                                <span class="font-semibold text-[16px]">Po. No</span>
+                                <input type="number" placeholder="Enter Po Num..." class="border border-[#f5efe5] rounded-md p-2 mt-2 w-[150px] ml-[0px]">
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <section class="flex w-full flex-col lg:flex-row">
+                    <aside class="mt-[30px]  bg-white basis-[30%] p-2">
+                        <div class="flex items-center justify-between">
+                            <div class="felx flex-col items-center mt-3 basis-[80%] w-[100%]">
+                                <p class="font-semibold text-[16px] ml-4">Item Name</p>
+                                <span class="w-[80%]">
+                                    <select id="vendor-name"
+                                        class="mt-2 px-2 py-2 font-semibold ml-7 border border-[#f5efe5] rounded-md w-[100%] text-[black]">
+                                        <option>Please Select</option>
+                                        <option value="option1">Option 1</option>
+                                        <option value="option2">Option 2</option>
+                                        <option value="option3">Option 3</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="flex flex-col items-center w-[100%] basis-[30%]">
+                                <p class="font-semibold text-[16px] ml-3">Avl</p>
+                                <input type="number" value="148" class="text-[red] border border-[#f5efe5] w-[60px] px-2 py-2 ml-5 mt-1">
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-semibold text-[16px] mr-[190px] mt-4 ml-4">Brand</span>
+                        </div>
+                        <div class="flex items-center w-[100%]">
+                            <span class="w-[80%]">
+                                <select id="vendor-name"
+                                    class="px-2 py-2 font-semibold ml-7 mt-2 border border-[#f5efe5] rounded-md w-[100%] text-[black]">
+                                    <option>Please Select</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    <option value="option3">Option 3</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-semibold text-[16px] mt-4 mr-[160px] ml-4">Quantity</span>
+                        </div>
+                        <div class="flex items-center w-[100%]">
+                            <span class="w-[80%]">
+                                <input type="text" placeholder="Enter Your Quantity" class="px-2 py-2 mt-2 font-semibold ml-7 border border-[#f5efe5] rounded-md w-[100%] text-[black]">
+                            </span>
+                        </div>
+                        <div class="my-5 ml-2">
+                            <span class="w-[100%]"><a href="#"
+                                    class="text-white bg-[#bf9853] ml-3 mt-2 px-4 py-2 rounded-md">Submit</a></span>
+                        </div>
+                    </aside>
+
+                    <aside class="mt-[30px] bg-white basis-[70%] relative">
+                        
+                        <section id="t_data" class="font-semibold overflow-auto text-sm mb-10">
+                            <table id="table" class="my-4 ml-3 rounded-md border-l-[5px] border-[#bf9853] lg:w-[98%!important] w-[700px!important]"
+                                style="table-layout: fixed;">
+                                <tr>
+                                    <th class="w-[10%] p-1">SI.No</th>
+                                    <th class="w-[20%] p-1">Item Name</th>
+                                    <th class="w-[20%] p-1">Brand</th>
+                                    <th class="w-[20%] p-1">Quantity</th>
+                                    <th class="w-[20%] p-1">Available</th>
+                                    <th class="w-[20%] p-1">Total</th>
+                                    <th class="w-[20%] p-1">Delete</th>
+                                </tr>
+                                <tr>
+                                    <td class="w-[10%] p-1">001</td>
+                                    <td class="w-[20%] p-1">Foot Light</td>
+                                    <td class="w-[20%] p-1">Crompton</td>
+                                    <td class="w-[20%] p-1">20Nos</td>
+                                    <td class="w-[20%] p-1">18</td>
+                                    <td class="w-[20%] p-1">38Nos</td>
+                                    <td>
+                                        <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[10%] p-1">002</td>
+                                    <td class="w-[20%] p-1">Tube Light</td>
+                                    <td class="w-[20%] p-1">Crompton</td>
+                                    <td class="w-[20%] p-1">12Nos</td>
+                                    <td class="w-[20%] p-1">18</td>
+                                    <td class="w-[20%] p-1">200Nos</td>
+                                    <td>
+                                        <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[10%] p-1">003</td>
+                                    <td class="w-[20%] p-1">Ceiling Fan</td>
+                                    <td class="w-[20%] p-1">Orient</td>
+                                    <td class="w-[20%] p-1">5Nos</td>
+                                    <td class="w-[20%] p-1">18</td>
+                                    <td class="w-[20%] p-1">200Nos</td>
+                                    <td>
+                                        <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[10%] p-1">004</td>
+                                    <td class="w-[20%] p-1">LED Light</td>
+                                    <td class="w-[20%] p-1">Orient</td>
+                                    <td class="w-[20%] p-1">2Nos</td>
+                                    <td class="w-[20%] p-1">18</td>
+                                    <td class="w-[20%] p-1">12Nos</td>
+                                    <td>
+                                        <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="flex items-end justify-end">
+                                <button class=" ml-2 mr-2 px-4 py-2 bg-[#bf9853] text-white rounded-md inline-block">Submit</button>
+                            </div>
+                        </section>
+                    </aside>
+                </section>
+            </section>
+
+            <!-- site Usage data section code -->
+            <section id="site_usage_data" class="hidden w-[140%] lg:w-[95%] ml-4 mr-4">
+                <article class="bg-white pt-[10px] pb-[20px] px-[10px] ">
+                    <div class="flex justify-start items-center gap-10 mt-4 ml-3 flex-wrap">
+                        <div class="flex gap-5 flex-col lg:flex-row">
+                            <div class="flex flex-col">
                                 <span class="font-semibold text-[16px]">Client Name</span>
                                 <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
-                                    <option>Enter Client Name...</option>
+                                    <option>Select Client Name</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    <option value="option3">Option 3</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-semibold text-[16px]">Category</span>
+                                <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
+                                    <option>Select Category</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    <option value="option3">Option 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <aside class="bg-white pt-[10px] pb-[20px] px-[10px] ">
+                    <div id="Ex_Table" class="w-[100%] overflow-auto">
+                        <table id="table" class="mt-11 ml-3 rounded-md border-l-[5px] border-[#bf9853] overflow-scroll lg:w-[100%!important] w-[1000px!important]" style="table-layout: fixed; width: 100%;">
+                            <tr>
+                                <th class="w-[10%] p-2">Date</th>
+                                <th class="w-[20%] p-2">Item Name <i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
+                                <th class="w-[15%] p-2">Brand<i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
+                                <th class="w-[10%] p-2">Category</th>
+                                <th class="w-[10%] p-2">Outgoing</th>
+                                <th class="w-[10%] p-2">Site Return</th>
+                                <th class="w-[10%] p-2">Net Usage</th>
+                                <th class="w-[10%] p-2">Delect</th>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[10%] p-2">Wall Mixer</td>
+                                <td class="w-[20%] p-2">Asian</td>
+                                <td class="w-[15%] p-2">PLUMBING</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2">0</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2"><i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[10%] p-2">Wall Mixer</td>
+                                <td class="w-[20%] p-2">Asian</td>
+                                <td class="w-[15%] p-2">PLUMBING</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2">0</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2"><i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[10%] p-2">Wall Mixer</td>
+                                <td class="w-[20%] p-2">Asian</td>
+                                <td class="w-[15%] p-2">PLUMBING</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2">0</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2"><i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[10%] p-2">Wall Mixer</td>
+                                <td class="w-[20%] p-2">Asian</td>
+                                <td class="w-[15%] p-2">PLUMBING</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2">0</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2"><i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[10%] p-2">Wall Mixer</td>
+                                <td class="w-[20%] p-2">Asian</td>
+                                <td class="w-[15%] p-2">PLUMBING</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2">0</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2"><i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[10%] p-2">Wall Mixer</td>
+                                <td class="w-[20%] p-2">Asian</td>
+                                <td class="w-[15%] p-2">PLUMBING</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2">0</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2"><i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[10%] p-2">Wall Mixer</td>
+                                <td class="w-[20%] p-2">Asian</td>
+                                <td class="w-[15%] p-2">PLUMBING</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2">0</td>
+                                <td class="w-[10%] p-2">3</td>
+                                <td class="w-[10%] p-2"><i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i></td>
+                            </tr>
+                        </table>
+                    </div>
+                </aside>
+            </section>
+
+            <!-- Net Stock section code  -->
+            <section id="net_data" class="hidden w-[140%] lg:w-[95%] ml-4 mr-4">
+                <article class="bg-white pt-[10px] pb-[20px] px-[10px] ">
+                    <div class="flex justify-start items-center gap-10 mt-4 ml-3 flex-wrap">
+                        <div class="flex gap-5 flex-col lg:flex-row">
+                            <div class="flex flex-col">
+                                <span class="font-semibold text-[16px]">Category</span>
+                                <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
+                                    <option>Select Category</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    <option value="option3">Option 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <aside class="bg-white pt-[10px] pb-[20px] px-[10px] ">
+                    
+                    <div id="Ex_Table" class="w-[100%] overflow-auto">
+                        <div class="flex items-end justify-end">
+                            <button class="text-[red]" data-bs-toggle="modal" data-bs-target="#ExportPDF_NetStock">Export PDF <i class="fa-regular fa-file-pdf"></i></button>
+                        </div>
+                        <table id="table" class="mt-11 ml-3 rounded-md border-l-[5px] border-[#bf9853] overflow-scroll lg:w-[100%!important] w-[1000px!important]" style="table-layout: fixed; width: 100%;">
+                            <tr>
+                                <th class="w-[40%] p-2">Item Name <i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
+                                <th class="w-[20%] p-2">Model</th>
+                                <th class="w-[20%] p-2">Brand<i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
+                                <th class="w-[10%] p-2">Stock count <i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
+                                <th class="w-[10%] p-2">Status</th>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">6A Switch one way</td>
+                                <td class="w-[10%] p-2">19272</td>
+                                <td class="w-[20%] p-2">Legrand</td>
+                                <td class="w-[15%] p-2">48</td>
+                                <td class="w-[10%] p-2">Place Order</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">6A Switch one way</td>
+                                <td class="w-[10%] p-2">19272</td>
+                                <td class="w-[20%] p-2">Legrand</td>
+                                <td class="w-[15%] p-2">48</td>
+                                <td class="w-[10%] p-2">Available</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">6A Switch one way</td>
+                                <td class="w-[10%] p-2">19272</td>
+                                <td class="w-[20%] p-2">Legrand</td>
+                                <td class="w-[15%] p-2">48</td>
+                                <td class="w-[10%] p-2">Place Order</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">6A Switch one way</td>
+                                <td class="w-[10%] p-2">19272</td>
+                                <td class="w-[20%] p-2">Legrand</td>
+                                <td class="w-[15%] p-2">48</td>
+                                <td class="w-[10%] p-2">Available</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">6A Switch one way</td>
+                                <td class="w-[10%] p-2">19272</td>
+                                <td class="w-[20%] p-2">Legrand</td>
+                                <td class="w-[15%] p-2">48</td>
+                                <td class="w-[10%] p-2">Place Order</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">6A Switch one way</td>
+                                <td class="w-[10%] p-2">19272</td>
+                                <td class="w-[20%] p-2">Legrand</td>
+                                <td class="w-[15%] p-2">48</td>
+                                <td class="w-[10%] p-2">Available</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">6A Switch one way</td>
+                                <td class="w-[10%] p-2">19272</td>
+                                <td class="w-[20%] p-2">Legrand</td>
+                                <td class="w-[15%] p-2">48</td>
+                                <td class="w-[10%] p-2">Place Order</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">6A Switch one way</td>
+                                <td class="w-[10%] p-2">19272</td>
+                                <td class="w-[20%] p-2">Legrand</td>
+                                <td class="w-[15%] p-2">48</td>
+                                <td class="w-[10%] p-2">Available</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">6A Switch one way</td>
+                                <td class="w-[10%] p-2">19272</td>
+                                <td class="w-[20%] p-2">Legrand</td>
+                                <td class="w-[15%] p-2">48</td>
+                                <td class="w-[10%] p-2">Place Order</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">6A Switch one way</td>
+                                <td class="w-[10%] p-2">19272</td>
+                                <td class="w-[20%] p-2">Legrand</td>
+                                <td class="w-[15%] p-2">48</td>
+                                <td class="w-[10%] p-2">Available</td>
+                            </tr>
+                        </table>
+                    </div>
+                </aside>
+            </section>
+
+            <!-- Histroy section code -->
+            <section id="his_data" class="hidden w-[140%] lg:w-[95%] ml-4 mr-4">
+                <article class="bg-white pt-[10px] pb-[20px] px-[10px] ">
+                    <div class="flex justify-start items-center gap-10 mt-4 ml-3 flex-wrap">
+                        <div class="flex gap-5 flex-col lg:flex-row">
+                            <div class="flex flex-col">
+                                <span class="font-semibold text-[16px]">Select Type</span>
+                                <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
+                                    <option>Dispatch Order</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    <option value="option3">Option 3</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-semibold text-[16px]">Vendor Name</span>
+                                <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
+                                    <option>Thangapandar Paints</option>
                                     <option value="option1">Option 1</option>
                                     <option value="option2">Option 2</option>
                                     <option value="option3">Option 3</option>
@@ -517,7 +899,7 @@
 
                     <aside class="my-[30px] pb-[60px] pt-[20px] px-[20px] bg-white basis-[50%] relative">
                         <div class="flex mt-3 items-center justify-center relative">
-                            <h1 class="text-[19px] font-semibold">Purchase Order</h1>
+                            <h1 class="text-[19px] font-semibold">Dispatch Order</h1>
                             <button id="pdf" data-bs-toggle="modal" data-bs-target="#ExportPDF_Histroy"
                                 class="mr-3 text-[14px] font-semibold hover:underline felx items-center justify-center absolute top-[40px] md:top-0 lg:top-0 right-0">Export
                                 PDF <i class="fa-regular fa-file-pdf text-[red]"></i></button>
@@ -549,55 +931,76 @@
                                 style="table-layout: fixed;">
                                 <tr>
                                     <th class="w-[20%] p-1">SI.No</th>
-                                    <th class="w-[20%] p-1">Description</th>
-                                    <th class="w-[20%] p-1">Type</th>
+                                    <th class="w-[20%] p-1">Item Name</th>
+                                    <th class="w-[20%] p-1">Brand</th>
                                     <th class="w-[20%] p-1">Quantity</th>
-                                    <th class="w-[20%] p-1">No.of Items</th>
+                                    <th class="w-[20%] p-1">Available</th>
+                                    <th class="w-[20%] p-1">Delect</th>
                                 </tr>
                                 <tr>
-                                    <td class="w-[20%] p-1">001</td>
-                                    <td class="w-[20%] p-1">White cement</td>
-                                    <td class="w-[20%] p-1">Enlighten 4148</td>
-                                    <td class="w-[20%] p-1">1kg</td>
-                                    <td class="w-[20%] p-1">1</td>
+                                    <td class="w-[10%] p-1">001</td>
+                                    <td class="w-[20%] p-1">Foot Light</td>
+                                    <td class="w-[20%] p-1">Crompton</td>
+                                    <td class="w-[20%] p-1">1Nos</td>
+                                    <td class="w-[20%] p-1">18</td>
+                                    <td>
+                                        <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-[20%] p-1">002</td>
-                                    <td class="w-[20%] p-1">Waste cloth-Colour</td>
-                                    <td class="w-[20%] p-1">Natural Cream</td>
-                                    <td class="w-[20%] p-1">1.5kg</td>
-                                    <td class="w-[20%] p-1">1</td>
+                                    <td class="w-[10%] p-1">002</td>
+                                    <td class="w-[20%] p-1">Tube Light</td>
+                                    <td class="w-[20%] p-1">Crompton</td>
+                                    <td class="w-[20%] p-1">12Nos</td>
+                                    <td class="w-[20%] p-1">115</td>
+                                    <td>
+                                        <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-[20%] p-1">003</td>
-                                    <td class="w-[20%] p-1">Waste cloth-Colour</td>
-                                    <td class="w-[20%] p-1">Natural Cream</td>
-                                    <td class="w-[20%] p-1">1.5kg</td>
-                                    <td class="w-[20%] p-1">1</td>
+                                    <td class="w-[10%] p-1">003</td>
+                                    <td class="w-[20%] p-1">Ceiling Fan</td>
+                                    <td class="w-[20%] p-1">Orient</td>
+                                    <td class="w-[20%] p-1">5Nos</td>
+                                    <td class="w-[20%] p-1">200</td>
+                                    <td>
+                                        <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-[10%] p-1">004</td>
+                                    <td class="w-[20%] p-1">LED Light</td>
+                                    <td class="w-[20%] p-1">Orient</td>
+                                    <td class="w-[20%] p-1">2Nos</td>
+                                    <td class="w-[20%] p-1">12</td>
+                                    <td>
+                                        <i class="fa-regular fa-trash-can ml-2 text-[red] cursor-pointer"></i>
+                                    </td>
                                 </tr>
                             </table>
                         </section>
-                        <div class="mt-4 absolute bottom-5 lg:bottom-10 right-[40px]">
-                            <span class="text-white bg-[#bf9853] ml-0 lg:px-4 px-2 py-2">Total</span><span
-                                class="text-white bg-[#bf9853] ml-0 mt-4 lg:px-4 px-2 py-2 ">05 kgs</span><span
-                                class="text-white bg-[#bf9853] ml-0 mt-4 lg:px-4 px-2 py-2">09</span>
+                        <div class="mt-4 absolute right-0">
+                            <span class="font-semibold mr-2">Total Item: </span><span class="text-[red] mr-2">20Nos</span>
                         </div>
                     </aside>
                 </section>
             </section>
-            <section id="in_data" class="hidden w-[90%] bg-white ml-4 pb-5">
+
+            <!-- Add Input data sextion code -->
+            <section id="in_data" class="hidden w-[140%] lg:w-[95%] bg-white ml-4 pb-5">
                 <div class="w-[100%]">
-                    <label for="dropdown" class="ml-4 mt-3 mb-0 font-semibold">Vendor Name</label><br>
-                    <select id="dropdown" name="dropdown" class="text-sm lg:text-[15px] lg:w-auto w-[60%] ml-4 mt-1 py-2 pl-0 pr-5 lg:my-5 border border-gray-500 rounded-md text-black">
-                        <option value="Thangapandar Paints">Thangapandar Paints</option>
+                    <label for="dropdown" class="ml-4 mt-3 mb-0 font-semibold">Category</label><br>
+                    <select id="dropdown" name="dropdown" class="text-sm lg:text-[15px] lg:w-auto w-[40%] ml-4 mt-1 py-2 pl-0 pr-5 lg:my-5 border border-gray-500 rounded-md text-black">
+                        <option value="Thangapandar Paints">Electrical</option>
                         <option value="option1">Option 1</option>
                         <option value="option2">Option 2</option>
                         <option value="option3">Option 3</option>
                         </h5>
                     </select>
+                    <button type="button" class="text-sm lg:text-[15px] ml-3 mt-1 px-3 lg:px-4 text-[white] hover:text-[#bf9853] rounded-md hover:bg-white hover:border hover:border-[#bf9853] py-2 bg-[#bf9853]"  data-bs-toggle="modal" data-bs-target="#Add_Input">+ Add</button>
                     <button type="button" class="text-sm lg:text-[15px] ml-3 mt-1 px-3 lg:px-4 text-[white] hover:text-[#bf9853] rounded-md hover:bg-white hover:border hover:border-[#bf9853] py-2 bg-[#bf9853]"  data-bs-toggle="modal" data-bs-target="#Edit_Input_Data">Edit</button>
                 </div>
-                <div class="flex flex-col lg:flex-row mt-3 ml-3 lg:w-[105%] w-[100%]">
+                <div class="flex flex-col lg:flex-row ml-3 lg:w-[105%] w-[100%]">
                     <article class="basis-[30%] mx-2">
                         <div class="flex lg:justify-start justify-center items-center lg:mt-1 mt-5">
                             <input type="text" placeholder="Search Description..." class="pr-5 w-[180px] lg:w-[200px] px-2 py-2 border ">
@@ -607,7 +1010,7 @@
                         <div class="cursor-pointer flex lg:justify-start justify-center items-center">
                             <div>
                                 <i class="fa-light fa-download mt-3 ml-2 text-[red]"></i>
-                                <span class="ml-2 text-[red]">Import</span>
+                                <span class="ml-2 text-[red]">Import file</span>
                             </div>
                         </div>
                         <div class="overflow-auto">
@@ -615,7 +1018,7 @@
                             style="table-layout: fixed;">
                             <tr>
                                 <th class="w-[5%] p-2">SI.No</th>
-                                <th class="w-[20%] p-2">Description</th>
+                                <th class="w-[20%] p-2">Item Name</th>
                                 <th class="w-[5%] p-2"></th>
                             </tr>
                             <tr class="HoverToShowBox">
@@ -727,14 +1130,14 @@
                     </article>
                     <aside class="basis-[30%] mr-">
                         <div class="flex lg:justify-start justify-center items-center lg:mt-1 mt-5">
-                            <input type="text" placeholder="Search Type..." class="pr-5 w-[180px] lg:w-[200px] px-2 py-2 border">
+                            <input type="text" placeholder="Search Site Name..." class="pr-5 w-[180px] lg:w-[200px] px-2 py-2 border">
                             <i class="fa-solid fa-magnifying-glass relative right-[30px]"></i>
                             <a href="#" class="ml-2 border-dashed	border-b-2 border-[#bf9853]" data-bs-toggle="modal" data-bs-target="#Add_Type">+ Add</a>
                         </div>
                         <div class="cursor-pointer flex lg:justify-start justify-center items-center">
                             <div>
                                 <i class="fa-light fa-download mt-3 ml-2 text-[red]"></i>
-                                <span class="ml-2 text-[red]">Import</span>
+                                <span class="ml-2 text-[red]">Import file</span>
                             </div>
                         </div>
                         <div class="overflow-auto">
@@ -742,7 +1145,7 @@
                             style="table-layout: fixed;">
                             <tr>
                                 <th class="w-[5%] p-2">SI.No</th>
-                                <th class="w-[20%] p-2">Type</th>
+                                <th class="w-[20%] p-2">Brand</th>
                                 <th class="w-[5%] p-2"></th>
                             </tr>
                             <tr class="HoverToShowBox">
@@ -848,139 +1251,18 @@
                         </table>
                         </div>                 
                     </aside>
-                    <aside class="basis-[30%]">
-                        <div class="flex lg:justify-start justify-center items-center lg:mt-1 mt-5">
-                            <input type="text" placeholder="Search Quantity..." class="pr-5 w-[180px] lg:w-[200px] px-2 py-2 border text-[#000!important]">
-                            <i class="fa-solid fa-magnifying-glass relative right-[30px]"></i>
-                            <a href="#" class="ml-2 border-dashed	border-b-2 border-[#bf9853]" data-bs-toggle="modal" data-bs-target="#Add_Quantity">+ Add</a>
-                        </div>
-                        <div class="cursor-pointer flex lg:justify-start justify-center items-center">
-                            <div>
-                                <i class="fa-light fa-download mt-3 ml-2 text-[red]"></i>
-                                <span class="ml-2 text-[red]">Import</span>
-                            </div>
-                        </div>
-                        <div class="overflow-auto">
-                            <table id="table" class="mt-4 ml-3 rounded-md border-l-[5px] border-[#bf9853] lg:w-[95%] w-[400px] md:w-[500px]"
-                            style="table-layout: fixed;">
-                            <tr>
-                                <th class="w-[5%] p-2">SI.No</th>
-                                <th class="w-[10%] lg:w-[20%] p-2">Quantity</th>
-                                <th class="w-[5%] p-2"></th>
-                            </tr>
-                            <tr class="HoverToShowBox">
-                                <td>001</td>
-                                <td>1kg</td>
-                                <td>
-                                    <div class="hoverToShow">
-                                        <i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i>
-                                        <i class="fa-regular ml-2 fa-trash-can text-[red]"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="HoverToShowBox">
-                                <td>002</td>
-                                <td>1.5kg</td>
-                                <td>
-                                    <div class="hoverToShow">
-                                        <i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i>
-                                        <i class="fa-regular ml-2 fa-trash-can text-[red]"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="HoverToShowBox">
-                                <td>003</td>
-                                <td>2kg</td>
-                                <td>
-                                    <div class="hoverToShow">
-                                        <i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i>
-                                        <i class="fa-regular ml-2 fa-trash-can text-[red]"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="HoverToShowBox">
-                                <td>004</td>
-                                <td>1kg</td>
-                                <td>
-                                    <div class="hoverToShow">
-                                        <i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i>
-                                        <i class="fa-regular ml-2 fa-trash-can text-[red]"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="HoverToShowBox">
-                                <td>005</td>
-                                <td>1kg</td>
-                                <td>
-                                    <div class="hoverToShow">
-                                        <i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i>
-                                        <i class="fa-regular ml-2 fa-trash-can text-[red]"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="HoverToShowBox">
-                                <td>006</td>
-                                <td>2.5kg</td>
-                                <td>
-                                    <div class="hoverToShow">
-                                        <i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i>
-                                        <i class="fa-regular ml-2 fa-trash-can text-[red]"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="HoverToShowBox">
-                                <td>007</td>
-                                <td>1kg</td>
-                                <td>
-                                    <div class="hoverToShow">
-                                        <i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i>
-                                        <i class="fa-regular ml-2 fa-trash-can text-[red]"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="HoverToShowBox">
-                                <td>008</td>
-                                <td>2kg</td>
-                                <td>
-                                    <div class="hoverToShow">
-                                        <i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i>
-                                        <i class="fa-regular ml-2 fa-trash-can text-[red]"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="HoverToShowBox">
-                                <td>009</td>
-                                <td>1.5kg</td>
-                                <td>
-                                    <div class="hoverToShow">
-                                        <i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i>
-                                        <i class="fa-regular ml-2 fa-trash-can text-[red]"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="HoverToShowBox">
-                                <td>010</td>
-                                <td>2.5kg</td>
-                                <td>
-                                    <div class="hoverToShow">
-                                        <i class="fa-regular fa-pen-to-square text-[#496] cursor-pointer"></i>
-                                        <i class="fa-regular ml-2 fa-trash-can text-[red]"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                        </div>                 
-                    </aside>
                 </div>
             </section>
+
+
         </div>
     </main>
+
+
     <!-- modal popup -->
 
-
-
-    <!--Export Modal for Purchase Order Section -->
-    <div class="modal fade" id="ExportPDF_Pur_Order" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!--Outgoing Modal for Dispatch Section -->
+    <div class="modal fade" id="Outgoing_Dispatch" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header flex items-center justify-center relative">
@@ -988,7 +1270,7 @@
                         aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
                 </div>
                 <div class="modal-body flex justify-center">
-                    <span class="mx-auto">Do You Want to Export This file?</span>
+                    <span class="mx-auto">Do You Want to Dispatch This Order?</span>
                 </div>
                 <div class="modal-footer flex items-center justify-center">
                     <button type="button"
@@ -1002,7 +1284,53 @@
         </div>
     </div>
 
-    <!--Export Modal for Histroy Section -->
+    <!--Stock Return Modal for Dispatch Section -->
+    <div class="modal fade" id="Stock_Return_Dispatch" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header flex items-center justify-center relative">
+                    <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal"
+                        aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+                </div>
+                <div class="modal-body flex justify-center">
+                    <span class="mx-auto">Do You Want to Conform This Order?</span>
+                </div>
+                <div class="modal-footer flex items-center justify-center">
+                    <button type="button"
+                        class="btn btn-secondary bg-[#bf9853] px-4 py-2 border-[#bf9853] hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]"
+                        data-bs-dismiss="modal">Yes</button>
+                    <button type="button" data-bs-dismiss="modal"
+                    aria-label="Close"
+                        class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Stock Update Modal for Dispatch Section -->
+    <div class="modal fade" id="Stock_Update_Dispatch" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header flex items-center justify-center relative">
+                    <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal"
+                        aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+                </div>
+                <div class="modal-body flex justify-center">
+                    <span class="mx-auto">Do You Want to Add from Stock List?</span>
+                </div>
+                <div class="modal-footer flex items-center justify-center">
+                    <button type="button"
+                        class="btn btn-secondary bg-[#bf9853] px-4 py-2 border-[#bf9853] hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]"
+                        data-bs-dismiss="modal">Yes</button>
+                    <button type="button" data-bs-dismiss="modal"
+                    aria-label="Close"
+                        class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Export PDF Modal for Histroy Section --> 
     <div class="modal fade" id="ExportPDF_Histroy" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -1025,7 +1353,30 @@
         </div>
     </div>
 
-    <!--Edit Modal for Input Data Section -->
+    <!--Export PDF Modal for Net Stock Section --> 
+    <div class="modal fade" id="ExportPDF_NetStock" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header flex items-center justify-center relative">
+                    <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal"
+                        aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+                </div>
+                <div class="modal-body flex justify-center">
+                    <span class="mx-auto">Do You Want to Export This file?</span>
+                </div>
+                <div class="modal-footer flex items-center justify-center">
+                    <button type="button"
+                        class="btn btn-secondary bg-[#bf9853] px-4 py-2 border-[#bf9853] hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]"
+                        data-bs-dismiss="modal">Yes</button>
+                    <button type="button" data-bs-dismiss="modal"
+                    aria-label="Close"
+                        class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Edit Modal for Add Input Data Section -->
     <div class="modal fade" id="Edit_Input_Data" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -1038,9 +1389,9 @@
                 <!-- Modal body content goes here -->
                  <form action="" method="POST" enctype="multipart/form-data">
                 <div class="flex justify-between items-center my-2">
-                    <input type="text" placeholder="Description" class="border-b-black w-[50%] lg:w-[70%] p-2 border">
+                    <input type="text" placeholder="Item Name" class="border-b-black w-[50%] lg:w-[70%] p-2 border">
                     <select name="" id="" class="border h-[40px] w-[100px]">
-                        <option value="">Text</option>
+                        <option value="">Dropdown</option>
                         <option value="">Option 1</option>
                         <option value="">Option 2</option>
                         <option value="">Option 3</option>
@@ -1049,7 +1400,7 @@
                     <i class="fa-regular ml-1 fa-trash-can text-[red] cursor-pointer"></i>
                 </div>
                 <div class="flex justify-between items-center my-2">
-                    <input type="text" placeholder="Type" class="border-b-black w-[50%] lg:w-[70%] p-2 border">
+                    <input type="text" placeholder="Brand" class="border-b-black w-[50%] lg:w-[70%] p-2 border">
                     <select name="" id="" class="border h-[40px] w-[100px]">
                         <option value="">Dropdown</option>
                         <option value="">Option 1</option>
@@ -1063,17 +1414,6 @@
                     <input type="text" placeholder="Quantity" class="border-b-black w-[50%] lg:w-[70%] p-2 border">
                     <select name="" id="" class="border h-[40px] w-[100px]">
                         <option value="">Number</option>
-                        <option value="">Option 1</option>
-                        <option value="">Option 2</option>
-                        <option value="">Option 3</option>
-                        <option value="">Option 4</option>
-                    </select>
-                    <i class="fa-regular ml-1 fa-trash-can text-[red] cursor-pointer"></i>
-                </div>
-                <div class="flex justify-between items-center my-2">
-                    <input type="text" placeholder="Remarks" class="border-b-black w-[50%] lg:w-[70%] p-2 border">
-                    <select name="" id="" class="border h-[40px] w-[100px]">
-                        <option value="">Text</option>
                         <option value="">Option 1</option>
                         <option value="">Option 2</option>
                         <option value="">Option 3</option>
@@ -1095,7 +1435,27 @@
           </div>
     </div>
 
-    <!--Add Description Modal for Input Data Section -->
+    <!-- + Add button Modal for Add Input Data Section -->
+    <div class="modal fade" id="Add_Input" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header flex items-center justify-center relative">
+              <h5 class="modal-title text-[red]" id="myModalLabel">Category Name</h5>
+              <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+            </div>
+            <div class="modal-body">
+              <!-- Modal body content goes here -->
+              <input type="text" placeholder="Enter here..." class="border-b-black w-[100%] p-2 border">
+            </div>
+            <div class="modal-footer flex items-center justify-center">
+              <button type="button" class="btn btn-secondary bg-[#bf9853] px-4 py-2 hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]" data-bs-dismiss="modal">Submit</button>
+              <button type="button" data-bs-dismiss="modal"  class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">Cancel</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!--Add Description Modal for add Input Data Section -->
     <div class="modal fade" id="Add_Des" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -1157,7 +1517,7 @@
     
 
 
-    <script src="po.js"></script>
+    <script src="app.js"></script>
     <!-- bootstrap 5 script cdn link -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
