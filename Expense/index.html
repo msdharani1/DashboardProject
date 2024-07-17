@@ -18,6 +18,23 @@
         a {
             text-decoration: none !important;
         }
+        @media (max-width: 767px) {
+            .hoverToShow{
+                display: block!important;
+            }
+        }
+        .hoverToShow {
+            display: none;
+        }
+        .HoverToShowBox{
+            cursor: pointer;
+        }
+        .HoverToShowBox td:nth-child(1){
+            padding-left: 10px!important;
+        }
+        .HoverToShowBox:hover .hoverToShow {
+            display: block;
+        }
     </style>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -287,7 +304,7 @@
                     <aside class="mt-[30px] bg-white lg:basis-[50%] basis-[50%] mb-10">
                         <div class="flex justify-between mt-3 mx-3">
                             <div id="matrialQuantity">
-                                <p>Matrial Quantity</p>
+                                <p class="font-[700]">Matrial Quantity</p>
                             </div>
                             <div id="totalAmount">
                                 <p class="text-red-600">6,98,0000</p>
@@ -483,15 +500,15 @@
                 </article>
                 <br>
                 <div class="flex justify-end items-center">
-                    <button id="adv_pdf"
+                    <button id="adv_pdf" data-bs-toggle="modal" data-bs-target="#ExportPDF_TableView"
                         class="mr-3 text-[12px] lg:text-[18px] text-[#da5959] hover:underline hidden felx items-center justify-center">Export
                         PDF <i id="adv_pdf_l"
                             class="fa-regular fa-file-pdf felx items-center justify-center hidden"></i></button>
-                    <button id="adv_xl"
+                    <button id="adv_xl" data-bs-toggle="modal" data-bs-target="#ExportXL_TableView"
                         class="mr-3 text-[12px] lg:text-[18px] text-[#166116] hover:underline hidden felx items-center justify-center">Export
                         XL <i id="adv_xl_l"
                             class="fa-solid fa-file-xls felx items-center justify-center hidden"></i></button>
-                    <button id="adv_print"
+                    <button id="adv_print" data-bs-toggle="modal" data-bs-target="#Print_Table_View"
                         class="mr-3 text-[12px] lg:text-[18px] text-[#bf9853] hover:underline hidden felx items-center justify-center">Print
                         <i id="adv_print_l"
                             class="fa-solid fa-print felx items-center justify-center hidden"></i></button>
@@ -926,20 +943,28 @@
 
             <!-- Input Data menu code -->
             <section id="in_data" class="hidden w-[150%] bg-white ml-4 pb-5 overflow-scroll">
+                <div class="flex justify-end items-center relative top-8">
+                    <button id="adv_pdf" data-bs-toggle="modal" data-bs-target="#ExportPDF_TableView"
+                        class="mr-3 text-[12px] lg:text-[18px] text-[#da5959] hover:underline  felx items-center justify-center">Export
+                        PDF <i id="adv_pdf_l"
+                            class="fa-regular fa-file-pdf felx items-center justify-center "></i></button>
+                    <button id="adv_xl" data-bs-toggle="modal" data-bs-target="#ExportXL_TableView"
+                        class="mr-3 text-[12px] lg:text-[18px] text-[#166116] hover:underline  felx items-center justify-center">Export
+                        XL <i id="adv_xl_l"
+                            class="fa-solid fa-file-xls felx items-center justify-center "></i></button>
+                    <button id="adv_print" data-bs-toggle="modal" data-bs-target="#Print_Table_View"
+                        class="mr-3 text-[12px] lg:text-[18px] text-[#bf9853] hover:underline  felx items-center justify-center">Print
+                        <i id="adv_print_l"
+                            class="fa-solid fa-print felx items-center justify-center"></i></button>
+                </div>
                 <div class="flex flex-col lg:flex-row mt-3 ml-3 lg:w-[105%] w-[100%]">
                     <article class="basis-[30%] mx-2">
                         <div class="flex lg:justify-start justify-center items-center lg:mt-1 mt-5">
-                            <input type="text" placeholder="Search Description..."
+                            <input type="text" placeholder="Search Site Name..."
                                 class="pr-5 w-[180px] lg:w-[200px] px-2 py-2 border ">
                             <i class="fa-solid fa-magnifying-glass relative right-[30px]"></i>
                             <button type="button" class="ml-2 border-dashed	border-b-2 border-[#bf9853]"
-                                data-bs-toggle="modal" data-bs-target="#Add_Des">+ Add</button>
-                        </div>
-                        <div class="cursor-pointer flex lg:justify-start justify-center items-center">
-                            <div>
-                                <i class="fa-light fa-download mt-3 ml-2 text-[red]"></i>
-                                <span class="ml-2 text-[red]">Import</span>
-                            </div>
+                                data-bs-toggle="modal" data-bs-target="#Add_SiteName">+ Add</button>
                         </div>
                         <div class="overflow-auto">
                             <table id="table"
@@ -1059,17 +1084,11 @@
                     </article>
                     <aside class="basis-[30%]">
                         <div class="flex lg:justify-start justify-center items-center lg:mt-1 mt-5">
-                            <input type="text" placeholder="Search Type..."
+                            <input type="text" placeholder="Search Vendar..."
                                 class="pr-5 w-[180px] lg:w-[200px] px-2 py-2 border">
                             <i class="fa-solid fa-magnifying-glass relative right-[30px]"></i>
                             <a href="#" class="ml-2 border-dashed	border-b-2 border-[#bf9853]" data-bs-toggle="modal"
-                                data-bs-target="#Add_Type">+ Add</a>
-                        </div>
-                        <div class="cursor-pointer flex lg:justify-start justify-center items-center">
-                            <div>
-                                <i class="fa-light fa-download mt-3 ml-2 text-[red]"></i>
-                                <span class="ml-2 text-[red]">Import</span>
-                            </div>
+                                data-bs-target="#Add_Vendar">+ Add</a>
                         </div>
                         <div class="overflow-auto">
                             <table id="table"
@@ -1185,17 +1204,11 @@
                     </aside>
                     <aside class="basis-[30%]">
                         <div class="flex lg:justify-start justify-center items-center lg:mt-1 mt-5">
-                            <input type="text" placeholder="Search Quantity..."
+                            <input type="text" placeholder="Search Contractor..."
                                 class="pr-5 w-[180px] lg:w-[200px] px-2 py-2 border text-[#000!important]">
                             <i class="fa-solid fa-magnifying-glass relative right-[30px]"></i>
                             <a href="#" class="ml-2 border-dashed	border-b-2 border-[#bf9853]" data-bs-toggle="modal"
-                                data-bs-target="#Add_Quantity">+ Add</a>
-                        </div>
-                        <div class="cursor-pointer flex lg:justify-start justify-center items-center">
-                            <div>
-                                <i class="fa-light fa-download mt-3 ml-2 text-[red]"></i>
-                                <span class="ml-2 text-[red]">Import</span>
-                            </div>
+                                data-bs-target="#Add_Contractor">+ Add</a>
                         </div>
                         <div class="overflow-auto">
                             <table id="table"
@@ -1309,19 +1322,13 @@
                             </table>
                         </div>
                     </aside>
-                    <aside class="basis-[30%] mr-">
+                    <aside class="basis-[30%]">
                         <div class="flex lg:justify-start justify-center items-center lg:mt-1 mt-5">
-                            <input type="text" placeholder="Search Type..."
+                            <input type="text" placeholder="Search Category..."
                                 class="pr-5 w-[180px] lg:w-[200px] px-2 py-2 border">
                             <i class="fa-solid fa-magnifying-glass relative right-[30px]"></i>
                             <a href="#" class="ml-2 border-dashed	border-b-2 border-[#bf9853]" data-bs-toggle="modal"
-                                data-bs-target="#Add_Type">+ Add</a>
-                        </div>
-                        <div class="cursor-pointer flex lg:justify-start justify-center items-center">
-                            <div>
-                                <i class="fa-light fa-download mt-3 ml-2 text-[red]"></i>
-                                <span class="ml-2 text-[red]">Import</span>
-                            </div>
+                                data-bs-target="#Add_Category">+ Add</a>
                         </div>
                         <div class="overflow-auto">
                             <table id="table"
@@ -1435,19 +1442,13 @@
                             </table>
                         </div>
                     </aside>
-                    <aside class="basis-[30%] mr-">
+                    <aside class="basis-[30%]">
                         <div class="flex lg:justify-start justify-center items-center lg:mt-1 mt-5">
-                            <input type="text" placeholder="Search Type..."
+                            <input type="text" placeholder="Search Machine Tools..."
                                 class="pr-5 w-[180px] lg:w-[200px] px-2 py-2 border">
                             <i class="fa-solid fa-magnifying-glass relative right-[30px]"></i>
                             <a href="#" class="ml-2 border-dashed	border-b-2 border-[#bf9853]" data-bs-toggle="modal"
-                                data-bs-target="#Add_Type">+ Add</a>
-                        </div>
-                        <div class="cursor-pointer flex lg:justify-start justify-center items-center">
-                            <div>
-                                <i class="fa-light fa-download mt-3 ml-2 text-[red]"></i>
-                                <span class="ml-2 text-[red]">Import</span>
-                            </div>
+                                data-bs-target="#Add_MachineTool">+ Add</a>
                         </div>
                         <div class="overflow-auto">
                             <table id="table"
@@ -1566,6 +1567,177 @@
         </div>
     </main>
 
+
+    <!-- popup modal -->
+
+    <!--Export PDF Modal for Table View Section --> 
+    <div class="modal fade" id="ExportPDF_TableView" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header flex items-center justify-center relative">
+                    <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal"
+                        aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+                </div>
+                <div class="modal-body flex justify-center">
+                    <span class="mx-auto">Do You Want to Export This file?</span>
+                </div>
+                <div class="modal-footer flex items-center justify-center">
+                    <button type="button"
+                        class="btn btn-secondary bg-[#bf9853] px-4 py-2 border-[#bf9853] hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]"
+                        data-bs-dismiss="modal">Yes</button>
+                    <button type="button" data-bs-dismiss="modal"
+                    aria-label="Close"
+                        class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Export XL Modal for Table View Section --> 
+    <div class="modal fade" id="ExportXL_TableView" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header flex items-center justify-center relative">
+                    <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal"
+                        aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+                </div>
+                <div class="modal-body flex justify-center">
+                    <span class="mx-auto">Do You Want to Export This file?</span>
+                </div>
+                <div class="modal-footer flex items-center justify-center">
+                    <button type="button"
+                        class="btn btn-secondary bg-[#bf9853] px-4 py-2 border-[#bf9853] hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]"
+                        data-bs-dismiss="modal">Yes</button>
+                    <button type="button" data-bs-dismiss="modal"
+                    aria-label="Close"
+                        class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--Print Modal for Table View Section --> 
+    <div class="modal fade" id="Print_Table_View" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header flex items-center justify-center relative">
+                    <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal"
+                        aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+                </div>
+                <div class="modal-body flex justify-center">
+                    <span class="mx-auto">Do You Want to Print?</span>
+                </div>
+                <div class="modal-footer flex items-center justify-center">
+                    <button type="button"
+                        class="btn btn-secondary bg-[#bf9853] px-4 py-2 border-[#bf9853] hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]"
+                        data-bs-dismiss="modal">Yes</button>
+                    <button type="button" data-bs-dismiss="modal"
+                    aria-label="Close"
+                        class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Add Site Name Modal for Input Data Section -->
+    <div class="modal fade" id="Add_SiteName" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header flex items-center justify-center relative">
+              <h5 class="modal-title text-[red]" id="myModalLabel">Site Name</h5>
+              <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+            </div>
+            <div class="modal-body">
+              <!-- Modal body content goes here -->
+              <input type="text" placeholder="Enter here..." class="border-b-black w-[100%] p-2 border">
+            </div>
+            <div class="modal-footer flex items-center justify-center">
+              <button type="button" class="btn btn-secondary bg-[#bf9853] px-4 py-2 hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]" data-bs-dismiss="modal">Submit</button>
+              <button type="button" data-bs-dismiss="modal"  class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">Cancel</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    <!--Add Vendar Modal for Input Data Section -->
+    <div class="modal fade" id="Add_Vendar" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header flex items-center justify-center relative">
+              <h5 class="modal-title text-[red]" id="myModalLabel">Vendaor Name</h5>
+              <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+            </div>
+            <div class="modal-body">
+              <!-- Modal body content goes here -->
+              <input type="text" placeholder="Enter here..." class="border-b-black w-[100%] p-2 border">
+            </div>
+            <div class="modal-footer flex items-center justify-center">
+              <button type="button" class="btn btn-secondary bg-[#bf9853] px-4 py-2 hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]" data-bs-dismiss="modal">Submit</button>
+              <button type="button" data-bs-dismiss="modal"  class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">Cancel</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    <!--Add Contractor Modal for Input Data Section -->
+    <div class="modal fade" id="Add_Contractor" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header flex items-center justify-center relative">
+              <h5 class="modal-title text-[red]" id="myModalLabel">Contractor Name</h5>
+              <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+            </div>
+            <div class="modal-body">
+              <!-- Modal body content goes here -->
+              <input type="text" placeholder="Enter here..." class="border-b-black w-[100%] p-2 border">
+            </div>
+            <div class="modal-footer flex items-center justify-center">
+              <button type="button" class="btn btn-secondary bg-[#bf9853] px-4 py-2 hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]" data-bs-dismiss="modal">Submit</button>
+              <button type="button" data-bs-dismiss="modal"  class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">Cancel</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!--Add Category Modal for Input Data Section -->
+    <div class="modal fade" id="Add_Category" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header flex items-center justify-center relative">
+              <h5 class="modal-title text-[red]" id="myModalLabel">Category Name</h5>
+              <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+            </div>
+            <div class="modal-body">
+              <!-- Modal body content goes here -->
+              <input type="text" placeholder="Enter here..." class="border-b-black w-[100%] p-2 border">
+            </div>
+            <div class="modal-footer flex items-center justify-center">
+              <button type="button" class="btn btn-secondary bg-[#bf9853] px-4 py-2 hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]" data-bs-dismiss="modal">Submit</button>
+              <button type="button" data-bs-dismiss="modal"  class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">Cancel</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!--Add Machine Tool Modal for Input Data Section -->
+    <div class="modal fade" id="Add_MachineTool" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header flex items-center justify-center relative">
+              <h5 class="modal-title text-[red]" id="myModalLabel">Machine Tool Name</h5>
+              <button type="button" class="btn-close block absolute top-1 right-3" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark text-[red]"></i></button>
+            </div>
+            <div class="modal-body">
+              <!-- Modal body content goes here -->
+              <input type="text" placeholder="Enter here..." class="border-b-black w-[100%] p-2 border">
+            </div>
+            <div class="modal-footer flex items-center justify-center">
+              <button type="button" class="btn btn-secondary bg-[#bf9853] px-4 py-2 hover:border-[#bf9853] hover:bg-white hover:text-[#bf9853]" data-bs-dismiss="modal">Submit</button>
+              <button type="button" data-bs-dismiss="modal"  class="btn btn-primary bg-white border-[#bf9853] px-4 py-2 text-[#bf9853] hover:!bg-[#bf9853] hover:text-white hover:border-none">Cancel</button>
+            </div>
+          </div>
+        </div>
+    </div>
 
     <script src="app.js"></script>
     <!-- bootstrap 5 script cdn link -->

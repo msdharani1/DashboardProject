@@ -175,72 +175,7 @@ function adv_data(){
     adv_print_l.classList.add("inline-block");
 }
 
-// Get the necessary elements
-const attachFileSpan = document.querySelector('.fa-paperclip').parentElement;
-const fileInput = document.createElement('input');
-fileInput.type = 'file';
-fileInput.style.display = 'none';
-attachFileSpan.appendChild(fileInput);
-
-// Store the original HTML content and styles
-const originalContent = attachFileSpan.innerHTML;
-const originalStyles = window.getComputedStyle(attachFileSpan);
-
-// Add click event listener to the "Attach File" span
-attachFileSpan.addEventListener('click', () => {
-  fileInput.click();
-});
-
-// Add change event listener to the file input
-fileInput.addEventListener('change', (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    // Clear existing content while maintaining the span's structure
-    attachFileSpan.innerHTML = '';
-    
-    // Create elements to display file name and close icon
-    const fileNameSpan = document.createElement('span');
-    fileNameSpan.textContent = file.name;
-    fileNameSpan.style.color = 'red';
-    fileNameSpan.style.margin = '0px 25px 20px 25px';
-    
-    const closeIcon = document.createElement('i');
-    closeIcon.className = 'fa-solid fa-xmark';
-    closeIcon.style.marginLeft = '5px';
-    closeIcon.style.cursor = 'pointer';
-    closeIcon.style.color = 'red';
-    closeIcon.style.marginTop = '-18px';
-    closeIcon.style.marginLeft = '-10px';
-    
-    // Create a wrapper div to maintain layout
-    const wrapperDiv = document.createElement('div');
-    wrapperDiv.style.display = 'flex';
-    wrapperDiv.style.alignItems = 'center';
-    wrapperDiv.style.marginTop = originalStyles.marginTop;
-    wrapperDiv.style.marginBottom = originalStyles.marginBottom;
-    
-    // Append elements to the wrapper
-    wrapperDiv.appendChild(fileNameSpan);
-    wrapperDiv.appendChild(closeIcon);
-    
-    // Append the wrapper to the span
-    attachFileSpan.appendChild(wrapperDiv);
-    
-    // Add click event listener to close icon
-    closeIcon.addEventListener('click', (e) => {
-      e.stopPropagation(); // Prevent triggering file input click
-      fileInput.value = ''; // Clear the file input
-      attachFileSpan.innerHTML = originalContent;
-      attachFileSpan.appendChild(fileInput);
-    });
-  }
-});
-
-
-
 // input data section
-
-
 function input_data(){
   in_data.classList.remove("hidden")
   in_data.classList.add("block");
