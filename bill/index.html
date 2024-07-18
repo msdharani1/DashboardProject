@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense</title>
+    <title>Bill</title>
     <link rel="icon" type="image/png" href="./img/logo.png" sizes="16x16">
     <!-- bootstrap link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -24,6 +24,12 @@
         a{
             color: #000!important;
             text-decoration: none!important;
+        }
+        td{
+            font-weight: 400!important;
+        }
+        th{
+            font-weight: 600!important
         }
         nav ul li:hover span,
         nav ul li:hover i{
@@ -178,13 +184,15 @@
                 <span id="status" class="mr-4 border-b-2 border-[#cdcdcd] cursor-pointer text-[10px] lg:text-[14px]" onclick="status()">Statement</span>
 
             </section>
+
+
             <main id="pen_bill_conatiner" class="w-[95%] ml-4 mr-4 block">
                 <article class="bg-white pt-[10px] pb-[20px] px-[10px] ">
                     <div class="flex justify-start items-center gap-10 mt-4 ml-3 flex-wrap">
                         <div class="flex flex-col lg:w-[20%] w-[100%]">
-                            <span class="font-semibold text-[16px]">Vendar Name</span>
+                            <span class="font-semibold text-[16px]">Vendor Name</span>
                             <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[100%] text-[gray]">
-                                <option>Select Vendar Name</option>
+                                <option>Select Vendor Name</option>
                                 <option value="option1">Option 1</option>
                                 <option value="option2">Option 2</option>
                                 <option value="option3">Option 3</option>
@@ -210,12 +218,12 @@
                             </select>
                     </div>
                 </article>
-                <section class="flex w-full lg:flex-row flex-col">
+                <section class="flex w-full lg:flex-row flex-col bg-white my-2">
                     <table id="table" class="mt-11 ml-3 rounded-md border-l-[5px] border-[#bf9853] overflow-scroll lg:w-[100%!important] w-[1000px!important]" style="table-layout: fixed; width: 100%;">
                         <tr>
                             <th class="w-[10%] p-2">SI.No</th>
-                            <th class="w-[10%] p-2">Bill Arrival Date</th>
-                            <th class="w-[20%] p-2">Vendar Name</th>
+                            <th class="w-[15%] p-2">Bill Arrival Date</th>
+                            <th class="w-[20%] p-2">Vendor Name</th>
                             <th class="w-[15%] p-2">No of Bills</th>
                             <th class="w-[15%] p-2">Total Amount</th>
                             <th class="w-[15%] p-2">Bill Verification</th>
@@ -305,13 +313,15 @@
                     </table>
                 </section>
             </main>
-            <section id="his_data" class="hidden bg-white ms-7 w-[100%] pr-10">
+
+
+            <section id="his_data" class="hidden ms-7 w-[100%] pr-10">
                 <article class="bg-white pt-[10px] pb-[20px] px-[10px] ">
                     <div class="flex justify-start items-center gap-10 mt-4 ml-3 flex-wrap">
                         <div class="flex flex-col lg:w-[20%] w-[100%]">
-                            <span class="font-semibold text-[16px]">Vendar Name</span>
+                            <span class="font-semibold text-[16px]">Vendor Name</span>
                             <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[100%] text-[gray]">
-                                <option>Select Vendar Name</option>
+                                <option>Select Vendor Name</option>
                                 <option value="option1">Option 1</option>
                                 <option value="option2">Option 2</option>
                                 <option value="option3">Option 3</option>
@@ -338,20 +348,119 @@
                     </div>
                 </article>
                 <br>
-                <div class="flex justify-end items-center">
-                    <button id="adv_pdf" class="mr-3 text-[12px] lg:text-[18px] text-[#da5959] hover:underline hidden felx items-center justify-center">Export PDF <i id="adv_pdf_l" class="fa-regular fa-file-pdf felx items-center justify-center hidden"></i></button>
-                    <button id="adv_xl" class="mr-3 text-[12px] lg:text-[18px] text-[#166116] hover:underline hidden felx items-center justify-center">Export XL <i id="adv_xl_l" class="fa-solid fa-file-xls felx items-center justify-center hidden"></i></button>
-                    <button id="adv_print" class="mr-3 text-[12px] lg:text-[18px] text-[#bf9853] hover:underline hidden felx items-center justify-center">Print <i id="adv_print_l" class="fa-solid fa-print felx items-center justify-center hidden"></i></button>
+
+                <div class="bg-white mt-[-15px]">
+                    <div id="Ex_Table" class="w-[100%] overflow-auto">
+                        <table id="table" class="mt-11 ml-3 rounded-md border-l-[5px] border-[#bf9853] overflow-scroll lg:w-[100%!important] w-[1000px!important]" style="table-layout: fixed; width: 100%;">
+                            <tr>
+                                <th class="w-[10%] p-2">SI.No</th>
+                                <th class="w-[15%] p-2">Bill Arrival Date</th>
+                                <th class="w-[20%] p-2">Vendor Name</th>
+                                <th class="w-[10%] p-2">No of Bills</th>
+                                <th class="w-[15%] p-2">Total Amount</th>
+                                <th class="w-[15%] p-2">Bill Verification</th>
+                                <th class="w-[10%] p-2">Entry Date</th>
+                                <th class="w-[10%] p-2">Mode</th>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">1001</td>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[20%] p-2">Shankar Cements</td>
+                                <td class="w-[15%] p-2">018</td>
+                                <td class="w-[10%] p-2">₹45,520</td>
+                                <td class="w-[10%] p-2">06/06/2024</td>
+                                <td class="w-[10%] p-2">09/06/2024</td>
+                                <td class="w-[10%] p-2">Cash</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">1001</td>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[20%] p-2">Shankar Cements</td>
+                                <td class="w-[15%] p-2">018</td>
+                                <td class="w-[10%] p-2">₹45,520</td>
+                                <td class="w-[10%] p-2">06/06/2024</td>
+                                <td class="w-[10%] p-2">09/06/2024</td>
+                                <td class="w-[10%] p-2">Cash</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">1001</td>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[20%] p-2">Shankar Cements</td>
+                                <td class="w-[15%] p-2">018</td>
+                                <td class="w-[10%] p-2">₹45,520</td>
+                                <td class="w-[10%] p-2">06/06/2024</td>
+                                <td class="w-[10%] p-2">09/06/2024</td>
+                                <td class="w-[10%] p-2">Cash</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">1001</td>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[20%] p-2">Shankar Cements</td>
+                                <td class="w-[15%] p-2">018</td>
+                                <td class="w-[10%] p-2">₹45,520</td>
+                                <td class="w-[10%] p-2">06/06/2024</td>
+                                <td class="w-[10%] p-2">09/06/2024</td>
+                                <td class="w-[10%] p-2">Cash</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">1001</td>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[20%] p-2">Shankar Cements</td>
+                                <td class="w-[15%] p-2">018</td>
+                                <td class="w-[10%] p-2">₹45,520</td>
+                                <td class="w-[10%] p-2">06/06/2024</td>
+                                <td class="w-[10%] p-2">09/06/2024</td>
+                                <td class="w-[10%] p-2">Cash</td>
+                            </tr>
+                            <tr>
+                                <td class="w-[10%] p-2">1001</td>
+                                <td class="w-[10%] p-2">18/08/21</td>
+                                <td class="w-[20%] p-2">Shankar Cements</td>
+                                <td class="w-[15%] p-2">018</td>
+                                <td class="w-[10%] p-2">₹45,520</td>
+                                <td class="w-[10%] p-2">06/06/2024</td>
+                                <td class="w-[10%] p-2">09/06/2024</td>
+                                <td class="w-[10%] p-2">Cash</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <div id="Ex_Table" class="w-[100%] overflow-auto">
+            </section>
+
+
+            <section id="st_data" class="hidden ms-7 w-[100%] pr-10 overflow-auto">
+                <article class="bg-white pt-[10px] pb-[20px] px-[10px] ">
+                    <div class="flex justify-start items-center gap-10 mt-4 ml-3 flex-wrap">
+                        <div class="flex flex-col lg:w-[20%] w-[100%]">
+                            <span class="font-semibold text-[16px]">Vendor Name</span>
+                            <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[100%] text-[gray]">
+                                <option>Select Vendor Name</option>
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                            </select>
+                        </div>
+                        <div class="flex gap-5 flex-col lg:flex-row w-[100%] lg:w-[30%]">
+                            <div class="flex flex-col lg:w-[50%] w-[100%]">
+                                <span class="font-semibold text-[16px]">From Date</span>
+                                <input type="date" class="p-2 mt-2 border border-[#f5efe5] rounded-md text-[gray] " value='2024-06-24'>
+                            </div>
+                            <div class="flex flex-col lg:w-[50%] w-[100%]">
+                                <span class="font-semibold text-[16px]">To Date</span>
+                                <input type="date" class="p-2 mt-2 border border-[#f5efe5] rounded-md text-[gray] " value='2024-06-24'>
+                            </div>
+                        </div>
+                </article>
+                
+                <div class="bg-white py-2 mt-2">
                     <table id="table" class="mt-11 ml-3 rounded-md border-l-[5px] border-[#bf9853] overflow-scroll lg:w-[100%!important] w-[1000px!important]" style="table-layout: fixed; width: 100%;">
                         <tr>
                             <th class="w-[10%] p-2">SI.No</th>
-                            <th class="w-[10%] p-2">Bill Arrival Date</th>
-                            <th class="w-[20%] p-2">Vendar Name</th>
+                            <th class="w-[15%] p-2">Bill Arrival Date</th>
+                            <th class="w-[20%] p-2">Vendor Name</th>
                             <th class="w-[15%] p-2">No of Bills</th>
-                            <th class="w-[10%] p-2">Total Amount</th>
-                            <th class="w-[10%] p-2">Bill Verification Date</th>
+                            <th class="w-[15%] p-2">Total Amount</th>
+                            <th class="w-[15%] p-2">Payment Date</th>
                             <th class="w-[10%] p-2">Entry Date</th>
                             <th class="w-[10%] p-2">Mode</th>
                         </tr>
@@ -417,102 +526,6 @@
                         </tr>
                     </table>
                 </div>
-            </section>
-            <section id="st_data" class="hidden bg-white ms-7 w-[100%] pr-10 overflow-auto">
-                <article class="bg-white pt-[10px] pb-[20px] px-[10px] ">
-                    <div class="flex justify-start items-center gap-10 mt-4 ml-3 flex-wrap">
-                        <div class="flex flex-col lg:w-[20%] w-[100%]">
-                            <span class="font-semibold text-[16px]">Vendar Name</span>
-                            <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[100%] text-[gray]">
-                                <option>Select Vendar Name</option>
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
-                            </select>
-                        </div>
-                        <div class="flex gap-5 flex-col lg:flex-row w-[100%] lg:w-[30%]">
-                            <div class="flex flex-col lg:w-[50%] w-[100%]">
-                                <span class="font-semibold text-[16px]">From Date</span>
-                                <input type="date" class="p-2 mt-2 border border-[#f5efe5] rounded-md text-[gray] " value='2024-06-24'>
-                            </div>
-                            <div class="flex flex-col lg:w-[50%] w-[100%]">
-                                <span class="font-semibold text-[16px]">To Date</span>
-                                <input type="date" class="p-2 mt-2 border border-[#f5efe5] rounded-md text-[gray] " value='2024-06-24'>
-                            </div>
-                        </div>
-                </article>
-                <table id="table" class="mt-11 ml-3 rounded-md border-l-[5px] border-[#bf9853] overflow-scroll lg:w-[100%!important] w-[1000px!important]" style="table-layout: fixed; width: 100%;">
-                    <tr>
-                        <th class="w-[10%] p-2">SI.No</th>
-                        <th class="w-[10%] p-2">Bill Arrival Date</th>
-                        <th class="w-[20%] p-2">Vendar Name</th>
-                        <th class="w-[15%] p-2">No of Bills</th>
-                        <th class="w-[10%] p-2">Total Amount</th>
-                        <th class="w-[10%] p-2">Bill Verification Date</th>
-                        <th class="w-[10%] p-2">Entry Date</th>
-                        <th class="w-[10%] p-2">Mode</th>
-                    </tr>
-                    <tr>
-                        <td class="w-[10%] p-2">1001</td>
-                        <td class="w-[10%] p-2">18/08/21</td>
-                        <td class="w-[20%] p-2">Shankar Cements</td>
-                        <td class="w-[15%] p-2">018</td>
-                        <td class="w-[10%] p-2">₹45,520</td>
-                        <td class="w-[10%] p-2">06/06/2024</td>
-                        <td class="w-[10%] p-2">09/06/2024</td>
-                        <td class="w-[10%] p-2">Cash</td>
-                    </tr>
-                    <tr>
-                        <td class="w-[10%] p-2">1001</td>
-                        <td class="w-[10%] p-2">18/08/21</td>
-                        <td class="w-[20%] p-2">Shankar Cements</td>
-                        <td class="w-[15%] p-2">018</td>
-                        <td class="w-[10%] p-2">₹45,520</td>
-                        <td class="w-[10%] p-2">06/06/2024</td>
-                        <td class="w-[10%] p-2">09/06/2024</td>
-                        <td class="w-[10%] p-2">Cash</td>
-                    </tr>
-                    <tr>
-                        <td class="w-[10%] p-2">1001</td>
-                        <td class="w-[10%] p-2">18/08/21</td>
-                        <td class="w-[20%] p-2">Shankar Cements</td>
-                        <td class="w-[15%] p-2">018</td>
-                        <td class="w-[10%] p-2">₹45,520</td>
-                        <td class="w-[10%] p-2">06/06/2024</td>
-                        <td class="w-[10%] p-2">09/06/2024</td>
-                        <td class="w-[10%] p-2">Cash</td>
-                    </tr>
-                    <tr>
-                        <td class="w-[10%] p-2">1001</td>
-                        <td class="w-[10%] p-2">18/08/21</td>
-                        <td class="w-[20%] p-2">Shankar Cements</td>
-                        <td class="w-[15%] p-2">018</td>
-                        <td class="w-[10%] p-2">₹45,520</td>
-                        <td class="w-[10%] p-2">06/06/2024</td>
-                        <td class="w-[10%] p-2">09/06/2024</td>
-                        <td class="w-[10%] p-2">Cash</td>
-                    </tr>
-                    <tr>
-                        <td class="w-[10%] p-2">1001</td>
-                        <td class="w-[10%] p-2">18/08/21</td>
-                        <td class="w-[20%] p-2">Shankar Cements</td>
-                        <td class="w-[15%] p-2">018</td>
-                        <td class="w-[10%] p-2">₹45,520</td>
-                        <td class="w-[10%] p-2">06/06/2024</td>
-                        <td class="w-[10%] p-2">09/06/2024</td>
-                        <td class="w-[10%] p-2">Cash</td>
-                    </tr>
-                    <tr>
-                        <td class="w-[10%] p-2">1001</td>
-                        <td class="w-[10%] p-2">18/08/21</td>
-                        <td class="w-[20%] p-2">Shankar Cements</td>
-                        <td class="w-[15%] p-2">018</td>
-                        <td class="w-[10%] p-2">₹45,520</td>
-                        <td class="w-[10%] p-2">06/06/2024</td>
-                        <td class="w-[10%] p-2">09/06/2024</td>
-                        <td class="w-[10%] p-2">Cash</td>
-                    </tr>
-                </table>
             </section>
         </div>
     </main>

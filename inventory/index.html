@@ -19,6 +19,12 @@
         body{
             font-family: 'Poppins', sans-serif;
         }
+        td{
+            font-weight: 400!important;
+        }
+        th{
+            font-weight: 600!important
+        }
         a{
             color: #000!important;
             text-decoration: none!important;
@@ -243,7 +249,10 @@
                                 <input type="number" placeholder="1906" class="border border-[#f5efe5] rounded-md p-2 mt-2 w-[100px] ml-[0px]">
                             </div>
                             <div class="flex flex-col">
-                                <span class="font-semibold text-[16px]">Site Incharge</span>
+                                <div class="flex justify-between mr-2">
+                                    <span class="font-semibold text-[16px]">Site Incharge</span>
+                                    <span class='text-[red]'>9894738532</span>
+                                </div>
                                 <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
                                     <option>Select Site Incharge</option>
                                     <option value="option1">Option 1</option>
@@ -545,9 +554,9 @@
                     </div>
                 </article>
                 
-                <aside class="bg-white pt-[10px] pb-[20px] px-[10px] ">
+                <aside class="bg-white pt-[10px] pb-[20px] px-[10px] mt-2">
                     <div id="Ex_Table" class="w-[100%] overflow-auto">
-                        <table id="table" class="mt-11 ml-3 rounded-md border-l-[5px] border-[#bf9853] overflow-scroll lg:w-[100%!important] w-[1000px!important]" style="table-layout: fixed; width: 100%;">
+                        <table id="table" class="mt-3 ml-3 rounded-md border-l-[5px] border-[#bf9853] overflow-scroll lg:w-[100%!important] w-[1000px!important]" style="table-layout: fixed; width: 100%;">
                             <tr>
                                 <th class="w-[10%] p-2">Date</th>
                                 <th class="w-[20%] p-2">Item Name <i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
@@ -651,18 +660,18 @@
                     </div>
                 </article>
                 
-                <aside class="bg-white pt-[10px] pb-[20px] px-[10px] ">
+                <aside class="bg-white pt-[10px] pb-[20px] px-[10px] mt-2">
                     
                     <div id="Ex_Table" class="w-[100%] overflow-auto">
-                        <div class="flex items-end justify-end">
-                            <button class="text-[red]" data-bs-toggle="modal" data-bs-target="#ExportPDF_NetStock">Export PDF <i class="fa-regular fa-file-pdf"></i></button>
+                        <div class="flex items-end justify-end mt-3">
+                            <button class="text-[red] mr-4" data-bs-toggle="modal" data-bs-target="#ExportPDF_NetStock">Export PDF <i class="fa-regular fa-file-pdf"></i></button>
                         </div>
-                        <table id="table" class="mt-11 ml-3 rounded-md border-l-[5px] border-[#bf9853] overflow-scroll lg:w-[100%!important] w-[1000px!important]" style="table-layout: fixed; width: 100%;">
+                        <table id="table" class="mt-4 ml-3 rounded-md border-l-[5px] border-[#bf9853] overflow-scroll lg:w-[100%!important] w-[1000px!important]" style="table-layout: fixed; width: 100%;">
                             <tr>
-                                <th class="w-[40%] p-2">Item Name <i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
-                                <th class="w-[20%] p-2">Model</th>
+                                <th class="w-[20%] p-2">Item Name <i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
+                                <th class="w-[15%] p-2">Model</th>
                                 <th class="w-[20%] p-2">Brand<i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
-                                <th class="w-[10%] p-2">Stock count <i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
+                                <th class="w-[15%] p-2">Stock count <i class="fa-regular fa-chevron-down ml-2 text-[12px] text-gray-950"></i></th>
                                 <th class="w-[10%] p-2">Status</th>
                             </tr>
                             <tr>
@@ -979,16 +988,16 @@
                                 </tr>
                             </table>
                         </section>
-                        <div class="mt-4 absolute right-0">
-                            <span class="font-semibold mr-2">Total Item: </span><span class="text-[red] mr-2">20Nos</span>
+                        <div class="mt-4 absolute right-4">
+                            <span class="font-semibold mr-4">Total Items: </span><span class="text-[red] mr-2">20Nos</span>
                         </div>
                     </aside>
                 </section>
             </section>
 
             <!-- Add Input data sextion code -->
-            <section id="in_data" class="hidden w-[140%] lg:w-[95%] bg-white ml-4 pb-5">
-                <div class="w-[100%]">
+            <section id="in_data" class="hidden w-[140%] lg:w-[95%] ml-4 pb-5 bg-white">
+                <div class="w-[100%] bg-whtie">
                     <label for="dropdown" class="ml-4 mt-3 mb-0 font-semibold">Category</label><br>
                     <select id="dropdown" name="dropdown" class="text-sm lg:text-[15px] lg:w-auto w-[40%] ml-4 mt-1 py-2 pl-0 pr-5 lg:my-5 border border-gray-500 rounded-md text-black">
                         <option value="Thangapandar Paints">Electrical</option>
@@ -1128,7 +1137,7 @@
                             </table>
                         </div>                 
                     </article>
-                    <aside class="basis-[30%] mr-">
+                    <aside class="basis-[30%]">
                         <div class="flex lg:justify-start justify-center items-center lg:mt-1 mt-5">
                             <input type="text" placeholder="Search Site Name..." class="pr-5 w-[180px] lg:w-[200px] px-2 py-2 border">
                             <i class="fa-solid fa-magnifying-glass relative right-[30px]"></i>

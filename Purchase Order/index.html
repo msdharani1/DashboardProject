@@ -23,6 +23,12 @@
             color: #000!important;
             text-decoration: none!important;
         }
+        td{
+            font-weight: 400!important;
+        }
+        th{
+            font-weight: 600!important
+        }
         nav ul li:hover span,
         nav ul li:hover i{
             color: #fff!important;
@@ -227,8 +233,11 @@
                                 <input type="number" placeholder="4,100" class="border border-[#f5efe5] rounded-md p-2 mt-2 w-[100px] ml-[0px]">
                             </div>
                             <div class="flex flex-col">
-                                <span class="font-semibold text-[16px]">Site Incharge</span>
-                                <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
+                                <div class="flex justify-between gap-10">
+                                    <span class="font-semibold text-[16px]">Site Incharge</span>
+                                    <span class="text-[red]">9867564732</span>
+                                </div>
+                                <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[280px] text-[gray]">
                                     <option>Selva Ganesh</option>
                                     <option value="option1">Option 1</option>
                                     <option value="option2">Option 2</option>
@@ -364,9 +373,9 @@
                     <div class="flex justify-start items-center gap-10 mt-4 ml-3 flex-wrap">
                         <div class="flex gap-5 flex-col lg:flex-row">
                             <div class="flex flex-col">
-                                <span class="font-semibold text-[16px]">Vendaor Name</span>
+                                <span class="font-semibold text-[16px]">Vendor Name</span>
                                 <select id="vendor-name" class="px-2 py-2 font-semibold mt-2 border border-[##FAF6ED] rounded-md w-[230px] text-[gray]">
-                                    <option>Enter Vendaor Name...</option>
+                                    <option>Enter Vendor Name...</option>
                                     <option value="option1">Option 1</option>
                                     <option value="option2">Option 2</option>
                                     <option value="option3">Option 3</option>
@@ -607,7 +616,7 @@
                         <div class="cursor-pointer flex lg:justify-start justify-center items-center">
                             <div>
                                 <i class="fa-light fa-download mt-3 ml-2 text-[red]"></i>
-                                <span class="ml-2 text-[red]">Import</span>
+                                <span class="ml-2 text-[red]">Import file</span>
                             </div>
                         </div>
                         <div class="overflow-auto">
@@ -734,7 +743,7 @@
                         <div class="cursor-pointer flex lg:justify-start justify-center items-center">
                             <div>
                                 <i class="fa-light fa-download mt-3 ml-2 text-[red]"></i>
-                                <span class="ml-2 text-[red]">Import</span>
+                                <span class="ml-2 text-[red]">Import file</span>
                             </div>
                         </div>
                         <div class="overflow-auto">
@@ -857,7 +866,7 @@
                         <div class="cursor-pointer flex lg:justify-start justify-center items-center">
                             <div>
                                 <i class="fa-light fa-download mt-3 ml-2 text-[red]"></i>
-                                <span class="ml-2 text-[red]">Import</span>
+                                <span class="ml-2 text-[red]">Import file</span>
                             </div>
                         </div>
                         <div class="overflow-auto">
