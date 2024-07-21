@@ -1,4 +1,3 @@
-
 // ! for bill.html
 let pen_bill = document.getElementById("pen_bill");
 let pen_bill_conatiner = document.getElementById("pen_bill_conatiner");
@@ -20,6 +19,10 @@ function pen(){
     his.classList.add("border-[#cdcdcd]");
     st.classList.remove("border-[#bf9853]");
     st.classList.add("border-[#cdcdcd]");
+
+    pen_bill.classList.add("font-semibold");
+    his.classList.remove("font-semibold");
+    st.classList.remove("font-semibold");
 }
 
 function His(){
@@ -35,6 +38,10 @@ function His(){
     his.classList.add("border-[#bf9853]");
     st.classList.remove("border-[#bf9853]");
     st.classList.add("border-[#cdcdcd]");
+
+    pen_bill.classList.remove("font-semibold");
+    his.classList.add("font-semibold");
+    st.classList.remove("font-semibold");
 }
 
 function status(){
@@ -50,33 +57,82 @@ function status(){
     his.classList.add("border-[#cdcdcd]");
     st.classList.remove("border-[#cdcdcd]");
     st.classList.add("border-[#bf9853]");
+
+    pen_bill.classList.remove("font-semibold");
+    his.classList.remove("font-semibold");
+    st.classList.add("font-semibold");
 }
 
-// Verify, paid entry logic
 document.addEventListener('DOMContentLoaded', function() {
     const table = document.getElementById('table');
+    const verifyModal = new bootstrap.Modal(document.getElementById('verifyModal'));
+    const billNumbers = document.getElementById('billNumbers');
+    const submitVerify = document.getElementById('submitVerify');
+    let currentVerifyButton = null;
+    
+    // Add custom styles
+    const style = document.createElement('style');
+    style.textContent = `
+        .btn-custom {
+            background-color: #bf9853;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #d6b17d;
+        }
+        .btn-outline-custom {
+            color: #bf9853;
+            border-color: #bf9853;
+        }
+        .btn-outline-custom:hover {
+            background-color: #bf9853;
+            color: white;
+        }
+        .bill-number {
+            border: 1px solid #bf9853;
+            color: #bf9853;
+        }
+        .bill-number:hover, .bill-number.active {
+            background-color: #bf9853;
+            color: white;
+        }
+    `;
+    document.head.appendChild(style);
     
     table.addEventListener('click', function(e) {
         if (e.target.tagName === 'BUTTON') {
             const button = e.target;
             
-            if (button.textContent.includes('Verify') || button.textContent.includes('To Pay')) {
-                toggleButtonState(button, button.textContent.includes('Verify') ? 'Verified' : 'Paid');
+            if (button.textContent.includes('Verify')) {
+                currentVerifyButton = button;
+                verifyModal.show();
+            } else if (button.textContent.includes('To Pay')) {
+                toggleButtonState(button, 'Paid');
             } else if (button.textContent === 'Entry') {
-                // Open the Bootstrap modal
                 const modal = new bootstrap.Modal(document.getElementById('Entry'));
                 modal.show();
                 
-                // Add event listener to the Confirm button in the modal
                 document.querySelector('#Entry .btn-confirm').addEventListener('click', function() {
                     toggleButtonState(button, 'Entered');
                     modal.hide();
                 });
             } else if (button.textContent === 'Entered') {
-                // If already entered, open modal again
                 const modal = new bootstrap.Modal(document.getElementById('Entry'));
                 modal.show();
             }
+        }
+    });
+
+    billNumbers.addEventListener('click', function(e) {
+        if (e.target.classList.contains('bill-number')) {
+            e.target.classList.toggle('active');
+        }
+    });
+
+    submitVerify.addEventListener('click', function() {
+        if (currentVerifyButton) {
+            toggleButtonState(currentVerifyButton, 'Verified');
+            verifyModal.hide();
         }
     });
 });
@@ -90,7 +146,7 @@ function toggleButtonState(button, text) {
     } else {
         button.innerHTML = `<span class="tick mr-1">✓</span>${text}`;
         button.classList.add('selected');
-        button.style.backgroundColor = '#70ff6b';
-        button.style.color = '#000';
+        button.style.backgroundColor = 'green';
+        button.style.color = '#fff';
     }
 }

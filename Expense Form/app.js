@@ -28,6 +28,9 @@ function table(){
     xl_l.classList.add("inline-block");
     print_l.classList.remove("hidden");
     print_l.classList.add("inline-block");
+
+    view.classList.remove("font-semibold");
+    t.classList.add("font-semibold")
 }
 
 function form(){
@@ -49,6 +52,8 @@ function form(){
     xl_l.classList.add("hidden");
     print_l.classList.remove("inline-block");
     print_l.classList.add("hidden");
+    view.classList.add("font-semibold");
+    t.classList.remove("font-semibold")
 }
 
 document.addEventListener('DOMContentLoaded', function() {

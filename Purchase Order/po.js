@@ -19,6 +19,10 @@ function Purchase_Order(){
     His.classList.add("border-[#cdcdcd]");
     inp.classList.remove("border-[#bf9853]");
     inp.classList.add("border-[#cdcdcd]");
+
+    p_O.classList.add("font-semibold");
+    His.classList.remove("font-semibold");
+    inp.classList.remove("font-semibold");
 }
 
 function History_(){
@@ -34,6 +38,10 @@ function History_(){
     p_O.classList.add("border-[#cdcdcd]");
     inp.classList.remove("border-[#bf9853]");
     inp.classList.add("border-[#cdcdcd]");
+
+    p_O.classList.remove("font-semibold");
+    His.classList.add("font-semibold");
+    inp.classList.remove("font-semibold");
 }
 
 function input_data(){
@@ -49,6 +57,10 @@ function input_data(){
     p_O.classList.add("border-[#cdcdcd]");
     His.classList.remove("border-[#bf9853]");
     His.classList.add("border-[#cdcdcd]");
+
+    p_O.classList.remove("font-semibold");
+    His.classList.remove("font-semibold");
+    inp.classList.add("font-semibold"); 
 }
 
 

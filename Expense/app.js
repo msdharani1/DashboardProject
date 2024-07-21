@@ -83,6 +83,13 @@ function advance(){
     adv_database_data.classList.add("hidden");
     adv.classList.remove("border-[#cdcdcd]");
     adv.classList.add("border-[#bf9853]");
+
+    adv.classList.add("font-semibold");
+    advtable.classList.remove("font-semibold");
+    pro_sts.classList.remove("font-semibold");
+    adv_database.classList.remove("font-semibold");
+    inp.classList.remove("font-semibold");
+
     inp.classList.remove("border-[#bf9853]");
     inp.classList.add("border-[#cdcdcd]");
     pro_sts.classList.remove("border-[#bf9853]");
@@ -124,6 +131,13 @@ function adv_table(){
     pro_sts.classList.add("border-[#cdcdcd]");
     advtable.classList.add("border-[#bf9853]");
     advtable.classList.remove("border-[#cdcdcd]");
+
+    adv.classList.remove("font-semibold");
+    advtable.classList.add("font-semibold");
+    pro_sts.classList.remove("font-semibold");
+    adv_database.classList.remove("font-semibold");
+    inp.classList.remove("font-semibold")
+
     adv_database.classList.remove("border-[#bf9853]");
     adv_database.classList.add("border-[#cdcdcd]");
     adv_pdf.classList.remove("hidden");
@@ -152,6 +166,7 @@ function adv_data(){
     adv_table_data.classList.remove("block");
     adv_table_data.classList.add("hidden");
     adv.classList.add("border-[#cdcdcd]");
+    inp.classList.remove("font-semibold")
     adv.classList.remove("border-[#bf9853]");
     inp.classList.remove("border-[#bf9853]");
     inp.classList.add("border-[#cdcdcd]");
@@ -160,6 +175,13 @@ function adv_data(){
     advtable.classList.remove("border-[#bf9853]");
     advtable.classList.add("border-[#cdcdcd]");
     adv_database.classList.add("border-[#bf9853]");
+
+    adv.classList.remove("font-semibold");
+    advtable.classList.remove("font-semibold");
+    pro_sts.classList.remove("font-semibold");
+    adv_database.classList.add("font-semibold");
+    inp.classList.remove("font-semibold");
+
     adv_database.classList.remove("border-[#cdcdcd]");
     adv_pdf.classList.remove("hidden");
     adv_pdf.classList.add("inline-block");
@@ -191,6 +213,12 @@ function input_data(){
 
   adv_database_data.classList.remove("block");
   adv_database_data.classList.add("hidden");
+
+  adv.classList.remove("font-semibold");
+  advtable.classList.remove("font-semibold");
+  pro_sts.classList.remove("font-semibold");
+  adv_database.classList.remove("font-semibold");
+  inp.classList.add("font-semibold")
   
   inp.classList.remove("border-[#cdcdcd]");
   inp.classList.add("border-[#bf9853]");
@@ -219,6 +247,12 @@ function project_sts(){
 
   adv_database_data.classList.remove("block");
   adv_database_data.classList.add("hidden");
+
+  adv.classList.remove("font-semibold");
+  advtable.classList.remove("font-semibold");
+  pro_sts.classList.add("font-semibold");
+  adv_database.classList.remove("font-semibold");
+  inp.classList.remove("font-semibold");
   
   pro_sts.classList.remove("border-[#cdcdcd]");
   pro_sts.classList.add("border-[#bf9853]");

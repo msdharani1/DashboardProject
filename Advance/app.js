@@ -91,6 +91,10 @@ function advance(){
     adv_xl_l.classList.add("hidden");
     adv_print_l.classList.remove("inline-block");
     adv_print_l.classList.add("hidden");
+
+    adv.classList.add("font-semibold");
+    advtable.classList.remove("font-semibold")
+    adv_database.classList.remove("font-semibold");
 }
 
 function adv_table(){
@@ -118,6 +122,10 @@ function adv_table(){
     adv_xl_l.classList.add("inline-block");
     adv_print_l.classList.remove("hidden");
     adv_print_l.classList.add("inline-block");
+
+    adv.classList.remove("font-semibold");
+    advtable.classList.add("font-semibold")
+    adv_database.classList.remove("font-semibold");
 }
 
 function adv_data(){
@@ -145,6 +153,10 @@ function adv_data(){
     adv_xl_l.classList.add("inline-block");
     adv_print_l.classList.remove("hidden");
     adv_print_l.classList.add("inline-block");
+
+    adv.classList.remove("font-semibold");
+    advtable.classList.remove("font-semibold")
+    adv_database.classList.add("font-semibold");
 }
 
 // Get the necessary elements

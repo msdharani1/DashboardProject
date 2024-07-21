@@ -182,7 +182,6 @@
                 <span id="pen_bill" class="ml-2 mr-4 font-semibold border-b-2 border-[#bf9853] cursor-pointer text-[10px] lg:text-[14px]" onclick="pen()">Pending Bill</span>
                 <span id="his" class="mr-4 border-b-2 border-[#cdcdcd] cursor-pointer text-[10px] lg:text-[14px]" onclick="His()">History</span>
                 <span id="status" class="mr-4 border-b-2 border-[#cdcdcd] cursor-pointer text-[10px] lg:text-[14px]" onclick="status()">Statement</span>
-
             </section>
 
 
@@ -563,13 +562,41 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary btn-confirm">Confirm</button>
+                <button type="button" class="btn btn-secondary border-[#bf9853!important] bg-[white!important] text-[#bf9853!important] hover:text-[#fff!important] hover:bg-[#bf9853!important] hover:border-[#fff!important]" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary btn-confirm hover:border-[#bf9853!important] hover:bg-[white!important] hover:text-[#bf9853!important] text-[#fff!important] bg-[#bf9853!important] border-[#fff!important]">Confirm</button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Verify Modal -->
+<div class="modal fade" id="verifyModal" tabindex="-1" aria-labelledby="verifyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title font-semibold" id="verifyModalLabel">Enter Bill Numbers</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row row-cols-3 g-3" id="billNumbers">
+            <div class="col"><button class="btn w-[80px] mb-1 mt-1 bill-number text-[#000!important] border-[black!important] hover:text-[white!important] hover:border-[#bf9853!important]">1234</button></div>
+            <div class="col"><button class="btn w-[80px] mb-1 mt-1 bill-number text-[#000!important] border-[black!important] hover:text-[white!important] hover:border-[#bf9853!important]">5678</button></div>
+            <div class="col"><button class="btn w-[80px] mb-1 mt-1 bill-number text-[#000!important] border-[black!important] hover:text-[white!important] hover:border-[#bf9853!important]">9012</button></div>
+            <div class="col"><button class="btn w-[80px] mb-1 mt-1 bill-number text-[#000!important] border-[black!important] hover:text-[white!important] hover:border-[#bf9853!important]">3456</button></div>
+            <div class="col"><button class="btn w-[80px] mb-1 mt-1 bill-number text-[#000!important] border-[black!important] hover:text-[white!important] hover:border-[#bf9853!important]">7890</button></div>
+            <div class="col"><button class="btn w-[80px] mb-1 mt-1 bill-number text-[#000!important] border-[black!important] hover:text-[white!important] hover:border-[#bf9853!important]">2345</button></div>
+            <div class="col"><button class="btn w-[80px] mb-1 mt-1 bill-number text-[#000!important] border-[black!important] hover:text-[white!important] hover:border-[#bf9853!important]">6789</button></div>
+            <div class="col"><button class="btn w-[80px] mb-1 mt-1 bill-number text-[#000!important] border-[black!important] hover:text-[white!important] hover:border-[#bf9853!important]">0123</button></div>
+            <div class="col"><button class="btn w-[80px] mb-1 mt-1 bill-number text-[#000!important] border-[black!important] hover:text-[white!important] hover:border-[#bf9853!important]">4567</button></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-custom" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-custom" id="submitVerify">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <script src="app.js"></script>
     <!-- bootstrap 5 script cdn link -->
@@ -577,5 +604,6 @@
     <!-- pie chart cdn link -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="piechart.js"></script>
+
 </body>
 </html>
